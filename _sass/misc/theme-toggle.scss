@@ -1,10 +1,11 @@
 .theme-toggle {
   position: relative;
-  width: $base-font-size * 7.65;
-  margin-top: 10px;
+  width: $base-font-size * 9;
+  margin-top: -70px;
   margin-right: 60px;
   margin-left: auto;
   transition: .3s cubic-bezier(.4,.03,0,1);
+  margin-bottom: 30px;
 
   label, .toggle {
     border-radius: 100px;
@@ -12,7 +13,7 @@
 
   label {
     display: block;
-    background-color: rgba(120,120,120,.15);
+    background-color: rgba(120,120,120,1);
     cursor: pointer;
   }
 

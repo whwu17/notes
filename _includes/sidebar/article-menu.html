@@ -7,7 +7,7 @@
 </style>
 
 <div class="post-menu">
-  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-title">Table of Contents</div>
   <div class="post-menu-content"></div>
 </div>
 
@@ -84,7 +84,7 @@
     doMenuCollapse(-1);
 
     // Active the menu item
-    window.addEventListener('scroll', function (event) {
+    let ff = function (event) {
       var lastActive = menuContent.querySelector('.active');
       var changed = true;
       var activeIndex = -1;
@@ -95,7 +95,7 @@
         var headerTop = Math.floor(headerRect.top);
         var headerHeight = Math.floor(headerRect.height);
         var headerHeight = headerTop + headerHeight + 20;
-        if (headingRect.top <= headerHeight) {
+        if (headingRect.top <= headerHeight || i==0) {
           var id = 'h-' + h.getAttribute('id');
           var a = menuContent.querySelector('a[href="#' + id  + '"]');
           var curActive = a.parentNode;
@@ -115,8 +115,10 @@
         }
         doMenuCollapse(activeIndex);
       }
-      event.preventDefault();
-    });
+      if(event!=null) event.preventDefault();
+    }
+    window.addEventListener('scroll', ff);
+    ff();
   }
   generateContent();
 </script>

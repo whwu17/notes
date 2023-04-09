@@ -8,15 +8,17 @@
   max-width: 230px;
 
   .post-menu-title {
-    font-size: $base-font-size * 1.5;
-    margin-bottom: 14px;
+    margin-top: 20px;
+    font-size: $base-font-size * 1.2;
+    margin-bottom: 15px;
     font-weight: 600;
     color: #222;
   }
 
   .post-menu-content {
     ul {
-      border-left: 1px solid #e9ecef;
+      border-left: 1px solid #c9cccf;
+      margin-left: 2px;
       $indent: $base-font-size / 4;
       $active-bgcolor: #ecebec;
 

@@ -96,10 +96,10 @@ html {
   margin-right: 50px;
 
   .site-brand-inner {
-    @include relative-font-size(1.125);
+    @include relative-font-size(1.5);
     font-weight: $base-font-weight;
-    letter-spacing: -1px;
-    transition: 0.1s filter color;
+    letter-spacing: 0px;
+    // transition: 0.1s filter color;
 
     &, &:visited {
       color: $header-text-color;
@@ -131,8 +131,8 @@ html {
   .page-link {
     line-height: $base-line-height;
     color: $header-text-color;
-    transition: 0.1s ease-in-out;
-
+    // transition: 0.1s ease-in-out;
+    @include relative-font-size(1.2);
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
       margin-right: 24px;
@@ -197,7 +197,8 @@ html {
 
   .site-footer-inner {
     transition: border-top 0.2s;
-    padding: $spacing-unit * 1.8 0;
+    padding: $spacing-unit  0;
+    text-align: center;
   }
 
   a {
