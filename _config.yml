@@ -116,7 +116,7 @@ theme_color: snowwhite
 # greatgold: #f2cb05
 # greenblue: #389092
 #
-brand_color: greatgold
+brand_color: greenblue
 #
 # Custom color as below:
 # brand_color: "#1a8e42"
@@ -139,7 +139,7 @@ brand_color: greatgold
 code_badge:
   enabled: "true"
   color: "#fff"
-  background_color: "#ff4e00"
+  background_color: "#888"
   text_transform: "capitalize"  # ("uppercase", "lowercase", "capitalize")
 
 # If you want to link only specific pages in your header, uncomment
