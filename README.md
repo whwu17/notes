@@ -32,7 +32,7 @@ Here is a GitHub Action named [jekyll-deploy-action](https://github.com/jeffreyt
 
 To set up your environment to develop this theme, run `bundle install`.
 
-Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. 
+To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. 
 
 ## License
 
