@@ -174,11 +174,12 @@ html {
     input:checked ~ .trigger {
       display: block;
       background: $header-background-color;
+      padding: 15px 0px;
     }
 
     .page-link {
       display: block;
-      padding: 5px 10px;
+      padding: 8px 0px;
       color: rgba($header-text-color, 80%);
       margin: 0 25px;
     }
@@ -680,7 +681,7 @@ html {
   }
 
   @include media-query($on-palm) {
-    height: $banner-height / 1.5;
+    height: $banner-height;
   }
 }
 

@@ -9,11 +9,11 @@ banner:
   loop: true
   volume: 0.8
   start_at: 8.5
-  image: https://bit.ly/3xTmdUP
+  image: transparent
   opacity: 0.618
-  background: "#000"
+  background: "conic-gradient(red, green, blue);"
   height: "100vh"
-  min_height: "38vh"
+  min_height: "100vh"
   heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
   subheading_style: "color: gold"
 tags: jekyll theme yat
@@ -35,6 +35,25 @@ end
 print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
 {% endhighlight %}
+
+## How to use picture?
+
+Use img-path.html to show the pictures.
+
+{% include img-path.html path="banners/home.jpg" %}
+{% include img-path.html path="/banners/home.jpg" %}
+
+It also supports html style code in options:
+```raw
+{\% include img-path.html path="banners/home.jpg" options='width="20%"' \%}
+```
+will render as:
+```html
+<img src="/notes/assets/images/banners/home.jpg" width="20%">
+```
+The result should be:
+{% include img-path.html path="banners/home.jpg" options='width="20%"' %}
+
 
 ## section 2
 

@@ -12,5 +12,5 @@ This is a platform for all readers to share knowledge and discussions. If you ha
 
 
 
-Have a nice journey from here!
+Have a nice journey!
 

@@ -1,0 +1,8 @@
+{% assign trunc_path = include.path | truncate: 1,"" %}
+{% if trunc_path == "/" %}
+  {% assign image_var = include.path %}
+{% else %}
+  {% assign image_var = '/' | append: include.path %}
+{% endif %}
+{% assign complete_image_path = image_var | prepend: '/assets/images' | relative_url%}
+<img src="{{complete_image_path}}" {{include.options}} />
