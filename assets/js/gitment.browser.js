@@ -3688,7 +3688,10 @@ var Gitment =
                     var index = reactions.findIndex(function (reaction) {
                         return reaction.user.login === user.login;
                     });
-                    return _utils.http.delete('/reactions/' + reactions[index].id).then(function () {
+                    var owner = this.owner,
+                    repo = this.repo;
+
+                    return _utils.http.delete('/repos/' + owner + '/' + repo + '/issues/' + this.state.meta.number +'/reactions/' + reactions[index].id).then(function () {
                         reactions.splice(index, 1);
                         _this13.state.meta.reactions.heart--;
                     });
@@ -3731,8 +3734,11 @@ var Gitment =
                     var index = reactions.findIndex(function (reaction) {
                         return reaction.user.login === user.login;
                     });
+                    var owner = this.owner,
+                    repo = this.repo;
 
-                    return _utils.http.delete('/reactions/' + reactions[index].id).then(function () {
+
+                    return _utils.http.delete('/repos/' + owner + '/' + repo + '/issues/comments/' + commentId + '/reactions/' + reactions[index].id).then(function () {
                         reactions.splice(index, 1);
                         comment.reactions.heart--;
                     });
