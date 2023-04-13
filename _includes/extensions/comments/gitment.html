@@ -12,5 +12,6 @@
         client_secret: '{{ site.gitment.client_secret }}',
       },
     });
+    // Note: The gitment.browser.js file is modified to match for the organization repository! creator is the creator id, while owner is the organization name. In the personal page, they should be equal. creator can be omitted (by default it's the same with owner), but owner is mandatory.
     gitment.render('gitment_thread')
   </script>
