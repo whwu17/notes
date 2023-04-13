@@ -2,7 +2,7 @@
 layout: post
 title: Pantone colors
 author: Wenhan
-categories: design
+categories: Aesthetic
 banner:
   image: transparent
   background: "conic-gradient(red, green, blue);"

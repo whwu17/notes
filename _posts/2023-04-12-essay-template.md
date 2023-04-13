@@ -2,7 +2,7 @@
 layout: post
 title: Graduated-related sites and materials
 categories: Postgraduate
-tags: [essay]
+tags: [essay, graduate]
 author: Wu Wenhan
 ---
 
@@ -58,19 +58,51 @@ author: Wu Wenhan
 
 总之，先免费查重，再前往知网进行付费查重。
 
+## 毕业论文参考文献
+
+一般来说，参考文献都应该采用bst文件格式。该文件格式采用key-value的方式进行编写，样例如下：
+```bst
+@inproceedings{DBLP:conf/cvpr/00010C00022,
+  author       = {Yikai Wang and
+                  Xinghao Chen and
+                  Lele Cao and
+                  Wenbing Huang and
+                  Fuchun Sun and
+                  Yunhe Wang},
+  title        = {Multimodal Token Fusion for Vision Transformers},
+  booktitle    = {IEEE/CVF Conference on Computer Vision and Pattern Recognition,
+                  {CVPR} 2022, New Orleans, LA, USA, June 18-24, 2022},
+  pages        = {12176--12185},
+  publisher    = {{IEEE}},
+  year         = {2022},
+  url          = {https://doi.org/10.1109/CVPR52688.2022.01187},
+  doi          = {10.1109/CVPR52688.2022.01187},
+  timestamp    = {Wed, 07 Dec 2022 23:06:29 +0100},
+  biburl       = {https://dblp.org/rec/conf/cvpr/00010C00022.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+```
+理论上，在每一个entry书写完成后，latex会自动按照格式进行排版，生成正确的参考文献格式。在实际编写中，有时候会出现个别字段由于key不同、key缺失、key冲突等原因，无法正确的显示参考文献。这在通常情况下不会成为问题。但毕业论文对格式（包括每一条参考文献的格式）的要求通常较高。同时，由于latex所见非所得的特性，每一条bst都需要经过编译才能检查其是否被正确渲染。如果字段缺失，还需要找到相应的key，方能修改为正确的格式。
+
+上述两点原因使得新的模版不再使用通常的bst格式，而是回归到了latex最原始的bib格式。在该格式下，输入的文字即为最终的输出，无需再次编译即可在代码栏看到最终的样式。该格式在format.cls的修订后隐藏了未引用的文献，并自动按文献在正文中出现的顺序进行编号。为了支持上述特性，每一个bibitem后面都要严格接两个大括号，第二个不能省略（如果不需要这两个特征则一般可以省略第二个大括号）。
+
+此外，如果希望很长的url可以在行尾溢出时自动换行，而不是独占一行，请在url外加上url()，例如：
+```bib
+\bibitem{ref}{authors. bb站. url(www.bb.com).}
+```
+而不是：
+```bib
+\bibitem{ref}{authors. bb站. www.bb.com.}
+```
+每一条参考文献的手写显然是影响论文的工作效率的。因此，可采用第三方文献工具的导出功能。例如，Mendeley软件支持以GB/T格式输出。通过复制粘贴的方式就可以获得大体正确的文献格式。可以在该基础上进行任何程度的微调，并最终放入论文的参考文献中。
+
+考虑到兼容性，模版保留了传统模式的参考文献，可通过选项进行切换。在bst格式中，需要使用key-value的方式进行填入，与其余毕业论文模版保持一致。
+
 ## 写在最后
+
+有关LaTex的相关说明可前往Graduate标签下的另一篇文章查看。
+
 毕业论文的编写是十分漫长且痛苦的，因此适当的分散注意力有助于调整心情。最后，祝所有看到本文的人都能顺利毕业~也包括我自己~
 
-## 附：数学公式的代码格式
-
-数学公式的代码格式一共有两种，MathML和LaTex。前者是W3C于1998年提出的用于解决数学专业中符号以及表达式的存储、显示、交换和管理等问题的XML语言。后者是Leslie Lamport于1980年代基于Donald E. Knuth的Tex演化的宏语言。其各自的特征如下：
-
-- 应用领域：LaTex适用于学术文章、书籍、报告、书信、幻灯片等排版，而MathML仅限于数学公式。
-- 格式：MathML符合XML文档的语法结构，LaTex符合Tex定义的语法。
-- MathML的结构化程度较高，且包括了内容和呈现两种类型的标记，LaTeX仅由呈现型的标记组成。
-- 与LaTeX相比，MathML的语义信息更为明确，因此创建处理MathML的解析器也较容易。
-- XML标记的链接功能比LaTeX的交叉引用功能更富于表现力，因此有了XML内嵌在HTML中，结构化文本比纯文本更容易被搜索引擎识别。
-
-Word中使用MathML为公式语言，而LaTex中使用Tex为公式语言。两者在公式编辑中部分相似，但仍有区别，因此需要进行转换。
 
 
