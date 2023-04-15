@@ -1,4 +1,35 @@
 /**
+ * Print Setup
+ */
+@page {
+  // padding: 1in 1in;
+  // margin-bottom: 1in;
+  size: A4;
+  marks: crop cross;
+  bleed: 7pt;
+}
+@page :first {
+  margin-top: 0;
+}
+@page :blank {
+  @top-center { 
+    content: "This page is intentionally left blank";
+  }
+}
+@media print {
+ 
+  // h1,h2,h3,h4 {margin-top: 10% !important;}
+  img,table  {page-break-inside: avoid;}
+  code {
+    white-space: break-spaces;
+    word-break: break-all;
+    overflow: hidden;
+  }
+  #click-to-top{
+    display: none !important;
+  }
+}
+/**
  * Animation for transparent header
  */
 html {
@@ -60,6 +91,9 @@ html {
  * Site header
  */
 .site-header {
+  @media print{
+    display: None;
+  }
   background-color: $header-background-color;
   height: $header-height;
   width: 100%;
@@ -458,6 +492,9 @@ html {
   }
 
   .post-related {
+    @media print{
+      display: None;
+    }
     &>*:first-child {
       @include relative-font-size(1.425);
       color: #333;
@@ -499,6 +536,9 @@ html {
 }
 
 .post-comments {
+  @media print{
+    display: None;
+  }
   padding-top: 25px;
 }
 
@@ -507,6 +547,9 @@ html {
  * Posts misc
  */
 .post-nav {
+  @media print{
+    display: None;
+  }
   display: flex;
   justify-content: space-between;
   margin: 72px 0 59px;
@@ -697,6 +740,9 @@ html {
   }
 
   .sidebar {
+    @media print{
+      display: None;
+    }
     padding-left: 8px;
     transition: top 0.2s, display 0.2s;
 

@@ -13,6 +13,8 @@
     {%- include functions.html func='get_reading_time' -%}
     {% assign reading_time = return %}
     <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o" style="padding-right: 5px;"></i>{{ reading_time }}</span>
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-pencil" style="padding-right: 5px;"></i>{{ page.author | default: site.author}}</span>
   </p>
 
   {%- if page.tags.size > 0 -%}

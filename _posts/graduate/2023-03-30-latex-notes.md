@@ -13,7 +13,7 @@ author: Wu Wenhan
 
 ### 表格
 在LaTeX中，表格的编写是较为困难的，特别是第一个表格的编写。在大多数模版（包括毕业论文模板）中，会预留一个表格示例，如下：
-```latex
+```LaTeX
 \begin{table}[!htb]
     \caption{标题}
     \label{tag}
@@ -34,7 +34,7 @@ author: Wu Wenhan
 
 ### 图片
 与表格一样，图片的插入代码同样已经在毕业论文模版中给出。大多数的模板也会给出标准代码，如下：
-```latex
+```LaTeX
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=4.5in]{path/to/figure.png}
@@ -65,19 +65,33 @@ author: Wu Wenhan
 
 ## 数学公式的代码格式
 ### 常用的数学公式格式
-常用的数学公式的代码格式一共有两种，LaTeX和MathML。
+常用的数学公式的代码格式一共有两种，LaTeX和UnicodeMath。
 
 LaTeX是Leslie Lamport于1986年基于Tex演化的宏语言。TeX是Donald E. Knuth于1978年提出的排版语言，其专业简洁的特性使得用户易于学习其中的功能，并能轻松排版适合的格式效果。
 
+UnicodeMath是由Murray Sargent III于2006年提出的轻量化数学标记语言，该语言最初版本可于[此处](https://www.unicode.org/notes/tn28/UTN28-PlainTextMath.pdf)查看。相较于LaTeX语言，该语言采用Unicode表达所有的公式元素，并更接近人类的描述风格。
+
+相较于LaTeX，UnicodeMath的书写风格更适合输入。例如：$\frac{a}{b}$在LaTeX中需要输入`\frac{a}{b}`，而在UnicodeMath中仅需要输入`a/b<space>`即可。然而，由于Unicode对所有的数学符号都进行了编码，因此包括了大量键盘上无法表示的符号，使得其难以运用。例如：U+220A表示$\in$符号，然而LaTeX中仅需输入`\in`三个字符。
+
+将上述两种风格结合，通过对UnicodeMath中键盘不可写的字符进行LaTeX转义，同时保留UnicodeMath的输入模式，即可得到Word中公式编辑器的使用方法。你可以在Word上方的“Equation选项组--Conversions选项卡--小箭头--Math AutoCorrect...按钮”中找到所有的Unicode字符到键盘可输入字符的转换（大多数直接使用LaTeX中的格式完成的，例如所有的罗马字母$\alpha$，使用`\alpha`进行转义）。目前，最新的Word同时支持LaTeX和UnicodeMath输入模式，但是对于Word2016前的版本不支持。同时，对盗版（例如通常都会用的KMS激活）的Word2016后的版本该选项点击后没有任何的反应。因此如果想要使用Word中的LaTeX，必须使用官方正版。
+
+对于如何使用Word中的公式编辑器，参考该文章即可（大多数与LaTeX完全一致，除了随时出现的反人类的`{}`换成了`<space>`）：<https://zhuanlan.zhihu.com/p/393384688>。
+
+综上，Word中使用UnicodeMath为（默认）公式语言，而LaTeX中使用Tex为公式语言。两者在公式编辑中部分相似，但仍有区别，因此需要进行转换。另外，除了UnicodeMath和LaTeX，还有其他公式处理格式，例如MathType的OpenMath。
+
+### MathML与LaTeX
+
 MathML是万维网联盟（W3C）于1998年提出的用于解决数学专业中符号以及表达式的存储、显示、交换和管理等问题的XML语言。该语言已经成为HTML5官方支持的语言，并被所有主流浏览器（Chrome、Safari、Firefox等）支持。同时，该语言已经在HTML5、EPUB3、DAISY、DITA、NLM/JATS和许多其他发布标准上定义数学。
 
-总体来说，两者各自的特征如下：
+与LaTex相比，各自的特征如下：
 
-- 应用领域：LaTex适用于学术文章、书籍、报告、书信、幻灯片等排版，而MathML仅限于数学公式。
-- 格式：MathML符合XML文档的语法结构，LaTex符合Tex定义的语法。
+- 应用领域：LaTeX适用于学术文章、书籍、报告、书信、幻灯片等排版，而MathML仅限于数学公式。
+- 格式：MathML符合XML文档的语法结构，LaTeX符合Tex定义的语法。
 - 书写风格：MathML的结构化程度较高，且包括了内容和呈现两种类型的标记，LaTeX仅由呈现型的标记组成。
 
-Word中使用MathML为公式语言，而LaTex中使用Tex为公式语言。两者在公式编辑中部分相似，但仍有区别，因此需要进行转换。
+
+
+
 
 ### MathML的优点与缺点
 
@@ -93,7 +107,9 @@ MathML有很多优势。例如：
 ```
 由于其代码极为繁琐冗长，目前大多数的MathML也都是通过计算机自动生成的，这与MathType（旧版Word公式编辑器）对公式的创建和编辑一致。同时，目前的网页渲染通常也是通过MathJax将用户编写的LaTeX代码转换成MathML格式，再经过浏览器内置的HTML5渲染完成。
 
-注意：MathML除了呈现型标记，还有（可选的）内容型标记，并通过`<annotation>`标签展示公式在文本朗读结构、latex结构、图像结构等代码。例如，对x^2+y这一公式的MathML标记如下：
+目前，基本所有的格式都可以（通常是由开源组织或官方）通过模型交换和对应工具转化为MathML。
+
+注意：MathML除了呈现型标记，还有（可选的）内容型标记，并通过`<annotation>`标签展示公式在文本朗读结构、LaTeX结构、图像结构等代码。例如，对x^2+y这一公式的MathML标记如下：
 ```XML
 <math>
     <semantics>
@@ -126,7 +142,7 @@ MathML有很多优势。例如：
     </semantics>
 </math>
 ```
-除MathML和LaTeX外，还有其他公式处理格式，例如MathType的OpenMath，但基本所有的格式都可以（通常是由开源组织或官方）通过模型交换和对应工具转化为MathML。
+
 
 
 

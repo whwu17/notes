@@ -38,7 +38,7 @@ You can also follow this site for annual update: <https://www.pantone.com/articl
 
 ## 2023: Viva Magenta 18-750
 RGB Substitution: #ac344b
-<img src="https://www.pantone.com/media/wysiwyg/color-of-the-year/downloads/wallpaper/pantone-wallpaper_color-of-the-year-2023-viva-magenta-18-1750-shrooms_430x932.jpg" style="padding:20px 0px">
+<img src="https://www.pantone.com/media/wysiwyg/color-of-the-year/downloads/wallpaper/pantone-wallpaper_color-of-the-year-2023-viva-magenta-18-1750-shrooms_430x932.jpg" style="padding:20px 0px;background: transparent;">
 Viva Magenta vibrates with vim and vigor. It is a shade rooted in nature descending from the red family and expressive of a new signal of strength. Viva Magenta is brave and fearless, a pulsating color whose exuberance promotes a joyous and optimistic celebration, writing a new narrative.
 
 This color of is powerful and empowering. It is an animated red that revels in pure joy, encouraging experimentation and self-expression without restraint, an electrifying, and a boundless shade that is manifesting as a stand-out statement. PANTONE 18-1750 Viva Magenta welcomes anyone and everyone with the same verve for life and rebellious spirit. It is a color that is audacious, full of wit and inclusive of all.
@@ -54,7 +54,7 @@ The Color of the Year 2023 merges the richness, warmth, and strength of natural 
 
 ## 2022: Very Peri 18-1750
 RGB Substitution: #6868ac
-<img src="https://forbo.azureedge.net/forboimages/1113592/5.webp" style="padding:20px 0px">
+<img src="https://forbo.azureedge.net/forboimages/1113592/5.webp" style="padding:20px 0px;background: transparent;">
 Very Peri: encouraging personal inventiveness and creativity
 
 Displaying a carefree confidence and a daring curiosity that animates our creative spirit, inquisitive and intriguing PANTONE 17-3938 Very Peri places the future ahead in a new light. We are living in transformative times. PANTONE 17-3938 Very Peri is a symbol of the global zeitgeist of the moment and the transition we are going through. As we emerge from an intense period of isolation, our notions and standards are changing, and our physical and digital lives have merged in new ways.
@@ -65,7 +65,7 @@ The Pantone Color of the Year reflects what is taking place in our global cultur
 ## 2021: Illuminating 13-0647 + Ultimate Gray 17-5104
 
 RGB Substitution: #f7e00e for Illuminating, and #939599 for Ultimate Gray
-<img src="https://www.pantone.com/media/wysiwyg/color-of-the-year/2021/pantone-color-of-the-year-2021-palette-enlightenment.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px">
+<img src="https://www.pantone.com/media/wysiwyg/color-of-the-year/2021/pantone-color-of-the-year-2021-palette-enlightenment.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px;background: transparent;">
 
 A MARRIAGE OF COLOR CONVEYING A MESSAGE OF STRENGTH AND HOPEFULNESS THAT IS BOTH ENDURING AND UPLIFTING.
 
@@ -79,7 +79,7 @@ As people look for ways to fortify themselves with energy, clarity, and hope to 
 ## 2020: Classic Blue 19-4052
 RGB Substitution: #0f4c81
 
-<img src="https://www.pantone.com/media/wysiwyg/pantone-2020-classic-blue-palette-ponder.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px">
+<img src="https://www.pantone.com/media/wysiwyg/pantone-2020-classic-blue-palette-ponder.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px;background: transparent;">
 
 
 INSTILLING CALM, CONFIDENCE, AND CONNECTION, THIS ENDURING BLUE HUE HIGHLIGHTS OUR DESIRE FOR A DEPENDABLE AND STABLE FOUNDATION ON WHICH TO BUILD AS WE CROSS THE THRESHOLD INTO A NEW ERA.
@@ -92,7 +92,7 @@ As technology continues to race ahead of the human ability to process it all, it
 
 ## 2019: Living Coral 16-1546
 RGB Substitution: #ff6f61
-<img src="https://www.pantone.com/media/wysiwyg/pantone-2019-living-coral-palette-shimmering-sunset.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px">
+<img src="https://www.pantone.com/media/wysiwyg/pantone-2019-living-coral-palette-shimmering-sunset.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px;background: transparent;">
 AN ANIMATING AND LIFE-AFFIRMING CORAL HUE WITH A GOLDEN UNDERTONE THAT ENERGIZES AND ENLIVENS WITH A SOFTER EDGE.
 
 Vibrant, yet mellow PANTONE 16-1546 Living Coral embraces us with warmth and nourishment to provide comfort and buoyancy in our continually shifting environment.
@@ -106,7 +106,7 @@ PANTONE 16-1546 Living Coral emits the desired, familiar, and energizing aspects
 ## 2018: Ultra Violet 18-3838
 RGB Substitution: #5f4b8b
 
-<img src="https://www.pantone.com/media/wysiwyg/pantone-color-of-the-year-2018-palette-purple-haze.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px">
+<img src="https://www.pantone.com/media/wysiwyg/pantone-color-of-the-year-2018-palette-purple-haze.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px;background: transparent;">
 INVENTIVE AND IMAGINATIVE, ULTRA VIOLET LIGHTS THE WAY TO WHAT IS YET TO COME.
 
 A dramatically provocative and thoughtful purple shade, PANTONE 18-3838 Ultra Violet communicates originality, ingenuity, and visionary thinking that points us toward the future.
@@ -119,7 +119,7 @@ Historically, there has been a mystical or spiritual quality attached to Ultra V
 
 ## 2017: Greenery 15-0343
 RGB Substitution: #88b04b
-<img src="https://www.pantone.com/media/wysiwyg/Pantone-Color-of-the-Year-2017-Color-Palette-1.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px">
+<img src="https://www.pantone.com/media/wysiwyg/Pantone-Color-of-the-Year-2017-Color-Palette-1.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px;background: transparent;">
 A REFRESHING AND REVITALIZING SHADE, GREENERY IS SYMBOLIC OF NEW BEGINNINGS.
 
 Greenery is a fresh and zesty yellow-green shade that evokes the first days of spring when nature’s greens revive, restore and renew. Illustrative of flourishing foliage and the lushness of the great outdoors, the fortifying attributes of Greenery signals consumers to take a deep breath, oxygenate and reinvigorate.
@@ -130,7 +130,7 @@ A life-affirming shade, Greenery is also emblematic of the pursuit of personal p
 
 ## 2016: Rose Quartz 13-1520 + Serenity 15-3919
 RGB Substitution: #f7cac9 for Rose Quartz, and 92a8d1 for Serenity
-<img src="https://www.pantone.com/media/wysiwyg/COY2016-Palettes.png?auto=webp&format=png&quality=85" style="padding:20px 0px">
+<img src="https://www.pantone.com/media/wysiwyg/COY2016-Palettes.png?auto=webp&format=png&quality=85" style="padding:20px 0px;background: transparent;">
 A SOFTER TAKE ON COLOR FOR 2016: FOR THE FIRST TIME, THE BLENDING OF TWO SHADES – ROSE QUARTZ AND SERENITY ARE CHOSEN AS THE PANTONE COLOR OF THE YEAR.
 
 As consumers seek mindfulness and well-being as an antidote to modern day stresses, welcoming colors that psychologically fulfill our yearning for reassurance and security are becoming more prominent. Joined together, Rose Quartz and Serenity demonstrate an inherent balance between a warmer embracing rose tone and the cooler tranquil blue, reflecting connection and wellness as well as a soothing sense of order and peace.
@@ -142,7 +142,7 @@ In many parts of the world we are experiencing a gender blur as it relates to fa
 ## 2015: Marsala 18-1438
 RGB Substitution: #955251
 <img src="https://www.pantone.com/media/wysiwyg/COY2016-Palettes.png?auto=webp&format=png&quality=85
-A NATURALLY ROBUST AND EARTHY WINE RED, MARSALA ENRICHES OUR MINDS, BODIES AND SOULS." style="padding:20px 0px">
+A NATURALLY ROBUST AND EARTHY WINE RED, MARSALA ENRICHES OUR MINDS, BODIES AND SOULS." style="padding:20px 0px;background: transparent;">
  
 
 Much like the fortified wine that gives Marsala its name, this tasteful hue embodies the satisfying richness of a fulfilling meal while its grounding red-brown roots emanate a sophisticated, natural earthiness. This hearty, yet stylish tone is universally appealing and translates easily to fashion, beauty, industrial design, home furnishings and interiors.
@@ -157,7 +157,7 @@ An earthy shade with a bit of sophistication, texture is the story in print and 
 
 ## 2014: Radiant Orchid 18-3224
 RGB Substitution: #B163a3
-<img src="https://www.pantone.com/media/wysiwyg/pantone-color-of-the-year-2014-radiant-orchid.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px">
+<img src="https://www.pantone.com/media/wysiwyg/pantone-color-of-the-year-2014-radiant-orchid.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px;background: transparent;">
 EXPRESSIVE, EXOTIC RADIANT ORCHID BLOOMS WITH CONFIDENCE AND WARMTH.
 
 Radiant Orchid for Fashion
@@ -172,7 +172,7 @@ This multifaceted hue is seductive when combined with red and pairs well with it
 
 ## 2013: Emerald 17-5641
 RGB Substitution: #009b77
-<img src="https://www.pantone.com/media/wysiwyg/pantone-color-of-the-year-2013-emerald_1.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px">
+<img src="https://www.pantone.com/media/wysiwyg/pantone-color-of-the-year-2013-emerald_1.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px;background: transparent;">
 A LIVELY, RADIANT, LUSH GREEN, IS THE COLOR OF THE YEAR FOR 2013.
 
 The 2012 color of the year, PANTONE 17-1463 Tangerine Tango, a spirited reddish orange, provided the energy boost we needed to recharge and move forward. Emerald, a vivid verdant green, enhances our sense of well-being further by inspiring insight as well as promoting balance and harmony.
@@ -186,7 +186,7 @@ Explore this page. Find out more about this radiant jewel tone and its many appl
 ## 2012: Tangerine Tango 17-1463
 RGB Substitution: #e2492f
 
-<img src="https://www.pantone.com/media/wysiwyg/pantone-color-of-the-year-2012-tangerine-tango_1.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px">
+<img src="https://www.pantone.com/media/wysiwyg/pantone-color-of-the-year-2012-tangerine-tango_1.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px;background: transparent;">
 DANCE INTO THE NEW YEAR WITH THIS VIVACIOUS AND APPEALING REDDISH ORANGE
  
 The 2011 color of the year, PANTONE 18-2120 Honeysuckle, encouraged us to face everyday troubles with verve and vigor. Tangerine Tango, a spirited reddish orange, continues to provide the energy boost we need to recharge and move forward.
@@ -201,7 +201,7 @@ Energize interior spaces with Tangerine Tango patterned home accessories. Pillow
 
 ## 2011: Honeysuckle 18-2120
 RGB Substitution: #cb6586
-<img src="https://www.pantone.com/media/wysiwyg/pantone-color-of-the-year-2011-honeysuckle_1.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px">
+<img src="https://www.pantone.com/media/wysiwyg/pantone-color-of-the-year-2011-honeysuckle_1.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px;background: transparent;">
 A COLOR FOR ALL SEASONS: COURAGEOUS. CONFIDENT. VITAL. A BRAVE NEW COLOR, FOR A BRAVE NEW WORLD. LET THE BOLD SPIRIT OF HONEYSUCKLE INFUSE YOU, LIFT YOU AND CARRY YOU THROUGH THE YEAR. IT’S A COLOR FOR EVERY DAY – WITH NOTHING “EVERYDAY” ABOUT IT.
 While the 2010 color of the year, PANTONE 15-5519 Turquoise, served as an escape for many, Honeysuckle emboldens us to face everyday troubles with verve and vigor. A dynamic reddish pink, Honeysuckle is encouraging and uplifting. It elevates our psyche beyond escape, instilling the confidence, courage and spirit to meet the exhaustive challenges that have become part of everyday life.
 
@@ -213,7 +213,7 @@ Honeysuckle is guaranteed to produce a healthy glow when worn by both men and wo
 
 ## 2010: Turquoise 15-5519
 RGB Substitution: #10a7a3
-<img src="https://www.pantone.com/media/wysiwyg/pantone-color-of-the-year-2010-turquoise.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px">
+<img src="https://www.pantone.com/media/wysiwyg/pantone-color-of-the-year-2010-turquoise.jpg?auto=webp&format=pjpg&quality=85" style="padding:20px 0px;background: transparent;">
 
 Pantone is pleased to announce PANTONE 15-5519 Turquoise, an inviting, luminous hue, as the Color of the Year for 2010. Combining the serene qualities of blue and the invigorating aspects of green, Turquoise inspires thoughts of soothing, tropical waters and a comforting escape from the everyday troubles of the world, while at the same time restoring our sense of wellbeing.
 
