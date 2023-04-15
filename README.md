@@ -11,14 +11,15 @@
 - RSS support using [Jekyll Feed][jekyll-feed] gem.
 - Optimized for search engines using [Jekyll Seo Tag][jekyll-seo-tag] gem.
 - Sitemap support using [Jekyll Sitemap][jekyll-sitemap] gem.
-- Complex and flexible table support using [Jekyll Spaceship][jekyll-spaceship] gem.
-- MathJAX and LaTeX optional support using [Jekyll Spaceship][jekyll-spaceship] gem.
-- Media (Youtube, Spotify, etc.) support using [Jekyll Spaceship][jekyll-spaceship] gem.
-- Diagram (PlantUML, Mermaid) support using [Jekyll Spaceship][jekyll-spaceship] gem.
+- MathJAX and LaTeX support.
 - Google Translation support.
 - New post tag support.
 
-Also, visit the [Live Demo][yat-live-demo] site for the theme.
+## Checklist
+
+- Media (Youtube, Spotify, etc.) support without [Jekyll Spaceship][jekyll-spaceship] gem.
+- Diagram (PlantUML, Mermaid) support without [Jekyll Spaceship][jekyll-spaceship] gem.
+- Complex and flexible table support without [Jekyll Spaceship][jekyll-spaceship] gem.
 
 ## Installation Limitation
 
