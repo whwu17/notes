@@ -156,7 +156,7 @@ header_pages:
 defaults:
   home:
     heading: "Notes and Blogs"
-    subheading: "Spaces for sharing perspectives and tools."
+    subheading: "Space for sharing perspectives and ideas."
     banner: "/assets/images/banners/home.jpg"
 
 # Banner default settings
