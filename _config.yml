@@ -146,8 +146,8 @@ code_badge:
 # this and add the path to the pages in order as they should show up
 header_pages:
   - index.html
-  - archives.html
   - categories.html
+  - timeline.html
   - tags.html
   - about.md
   - exit.html

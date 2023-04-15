@@ -42,8 +42,6 @@ This theme is licensed under the [MIT license](https://opensource.org/licenses/m
 <!-- External links -->
 
 [jekyll]: https://jekyllrb.com/
-[yat-git-repo]: https://github.com/jeffreytse/jekyll-theme-yat/
-[yat-live-demo]: https://jeffreytse.github.io/jekyll-theme-yat/
 [jekyll-spaceship]: https://github.com/jeffreytse/jekyll-spaceship
 [jekyll-seo-tag]: https://github.com/jekyll/jekyll-seo-tag
 [jekyll-sitemap]: https://github.com/jekyll/jekyll-sitemap
