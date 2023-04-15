@@ -16,7 +16,7 @@ pie title Pets adopted by volunteers
 
 ### 2. sequence diagram
 
-@startmermaid
+```mermaid
 sequenceDiagram
   Alice ->> Bob: Hello Bob, how are you?
   Bob-->>John: How about you John?
@@ -26,7 +26,7 @@ sequenceDiagram
   
   Bob-->Alice: Checking with John...
   Alice->John: Yes... John, how are you?
-@endmermaid
+```
 
 ```mermaid
 graph TD
