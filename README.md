@@ -21,14 +21,6 @@
 - Diagram (PlantUML, Mermaid) support without [Jekyll Spaceship][jekyll-spaceship] gem.
 - Complex and flexible table support without [Jekyll Spaceship][jekyll-spaceship] gem.
 
-## Installation Limitation
-
-GitHub Pages runs in `safe` mode and only allows [a set of whitelisted plugins/themes](https://pages.github.com/versions/). **In other words, the third-party gems will not work normally**.
-
-To use the third-party gem in GitHub Pages without limitation:
-
-Here is a GitHub Action named [jekyll-deploy-action](https://github.com/jeffreytse/jekyll-deploy-action) for Jekyll site deployment conveniently. 
-
 ## Development
 
 To set up your environment to develop this theme, run `bundle install`.
