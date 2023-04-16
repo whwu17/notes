@@ -207,7 +207,7 @@ gitment:
 #   follow_site_theme: true
 
 collections:
-  examples:
+  docs:
     output: true
     # sort_by: index
   drafts:

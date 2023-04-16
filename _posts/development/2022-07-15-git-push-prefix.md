@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Prefix for GitHub summits
+title: Prefix for GitHub submits
 categories: Development
 tags: [develop, git]
 author: Wu Wenhan
