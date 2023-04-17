@@ -7,16 +7,16 @@ tags: [mermaid]
 
 ### 1. Pie chart
 
-```mermaid
+```native-mermaid
 pie title Pets adopted by volunteers
   "Dogs" : 386
   "Cats" : 85
   "Rats" : 35
 ```
 
-### 2. sequence diagram
+### 2. Sequence diagram
 
-```mermaid
+```native-mermaid
 sequenceDiagram
   Alice ->> Bob: Hello Bob, how are you?
   Bob-->>John: How about you John?
@@ -28,7 +28,7 @@ sequenceDiagram
   Alice->John: Yes... John, how are you?
 ```
 
-```mermaid
+```native-mermaid
 graph TD
 A[Christmas] -->|Get money| B(Go shopping)
   B --> C{Let me think}
@@ -38,7 +38,7 @@ A[Christmas] -->|Get money| B(Go shopping)
 ```
 
 ### 3. Class diagram
-```mermaid
+```native-mermaid
 classDiagram
 Animal <|-- Duck
 Animal <|-- Fish
@@ -63,7 +63,7 @@ class Zebra{
 ```
 
 ### 4. State diagram
-```mermaid
+```native-mermaid
 stateDiagram
 [*] --> Still
 Still --> [*]

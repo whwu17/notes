@@ -8,8 +8,6 @@ tags: [test]
 
 Put the math expression within <span>$</span>...\$:
 
-\\(\LaTeX{}\\)
-
 $\Pi$
 
 $ a * b = c ^ b $
@@ -17,8 +15,6 @@ $ a * b = c ^ b $
 $ 2^{\frac{n-1}{3}} $
 
 $ \int\_a^b f(x)\,dx. $
-
-\\( \int\_a^b f(x)\,dx. \\)
 
 $$
 \begin{cases}
@@ -227,18 +223,11 @@ Authoritative DNS MX Record | `<Mail Gateway>`
 | 1 \* 3 = 3 | 2 \* 3 = 6 | 3 \* 3 = 9  |
 | 1 \* 3 = 3 | 2 \* 3 = 6 | 3 \* 4 = 12 | 4 \* 4 = 16 |
 
-## Emoji
-:+1:
+
 
 ## Mathjax
 
 $\LaTeX{}$
-
-## PlantUML
-
-@startuml
-Bob -> Alice : hello
-@enduml
 
 ## Mermaid
 
@@ -295,10 +284,6 @@ FLAC file (".flac") :
 CAF file (".caf") :
 
 ![](https://hpr.dogphilosophy.net/test/cafopus.caf)
-
-Spotify Podcast:
-
-![](https://open.spotify.com/episode/31AxcwYdjsFtStds5JVWbT)
 
 ## Special media links
 

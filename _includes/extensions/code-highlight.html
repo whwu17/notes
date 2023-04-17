@@ -45,6 +45,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
     block.setAttribute('class', 'hljs ' + lang);
     block.parentNode.setAttribute('data-lang', lang);
+    return lang;
+  }
+
+  function removeCodeTag(block) {
+    console.log(block)
+    var cls = block.getAttribute('class');
+    lang = block.parentElement.getAttribute('data-lang');
+    console.log(lang)
+    var _this=block.parentElement
+    block.parentElement.innerHTML= block.innerHTML;
+    _this.setAttribute('class', lang.substr(7));
   }
 
   function addBadge(block) {
@@ -56,9 +67,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
   }
 
   function handle(block) {
-    addLangData(block);
-    addBadge(block)
-    hljs.highlightBlock(block);
+    let lang=addLangData(block);
+    if(lang.indexOf("native")!=-1){
+      removeCodeTag(block);
+    }else{
+      addBadge(block)
+      hljs.highlightBlock(block);
+    }
   }
 
   for (var i = 0; i < els.length; i++) {
