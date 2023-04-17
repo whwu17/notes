@@ -30,6 +30,10 @@ To test your theme, run `bundle exec jekyll serve` and open your browser at `htt
 
 This theme is licensed under the [MIT license](https://opensource.org/licenses/mit-license.php) © JeffreyTse.
 
+This site for notes is modified based on the theme, with `spaceship` excluded and feature extensions. 
+- All codes are licensed under the [MIT license](https://opensource.org/licenses/mit-license.php) © Wu Wenhan.
+- All posts are strictly prohibited for any use (incl. commerical use), without the agreements with the original authors and site developers.
+
 <!-- External links -->
 
 [jekyll]: https://jekyllrb.com/
