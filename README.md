@@ -12,7 +12,6 @@
 - Optimized for search engines using [Jekyll Seo Tag][jekyll-seo-tag] gem.
 - Sitemap support using [Jekyll Sitemap][jekyll-sitemap] gem.
 - Diagram (Mermaid), MathJAX and LaTeX support.
-- Google Translation support.
 - New post tag support.
 
 ## Todo List

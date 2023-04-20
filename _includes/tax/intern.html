@@ -1,0 +1,150 @@
+<div id="in">
+  <style>
+    input {
+      width: 40pt;
+    }
+    button {
+      margin: 5pt;
+      padding: 5pt 10pt;
+      font-size: 12pt;
+      margin-bottom: 20pt;
+    }
+  </style>
+  <p>在校实习税率计算器</p>
+  <table>
+    <thead>
+      <th>收入</th>
+      <th>费用</th>
+      <th>减除费用</th>
+      <th>预扣率</th>
+      <th>速算扣除数</th>
+      <th>缴税额</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="text" class="intern" /></td>
+        <td class="fee"></td>
+        <td class="deduction"></td>
+        <td class="rate"></td>
+        <td class="deductionfee"></td>
+        <td class="tax"></td>
+      </tr>
+    </tbody>
+  </table>
+  <button onclick="addOne()">新增行</button>
+  <button onclick="calculate()">计算</button>
+  <p>注1：该计算器默认学生的在读身份。如果提交的证明小于实际的在读月份，可能的解决方式是将这一个月份的收入放到前一个月中累加，这样减除费用仅计算一次，而不是多次。</p>
+  <p>注2：该计算器中的费用是按照收入计算得到的，而在后面的计算中全部都是累计费用，而非前面显示的费用。这样做的目的是仅是希望和实际个人所得税APP的结果保持一致。</p>
+</div>
+
+<script>
+  let field = document.getElementById('in');
+  function addOne() {
+    let li = document.createElement("tr");
+    li.innerHTML = "<tr><td><input type=\"text\" class=\"intern\"/></td><td class=\"fee\"></td><td class=\"deduction\"></td><td class=\"rate\"></td><td class=\"deductionfee\"></td><td class=\"tax\"></td></tr>"
+    field.getElementsByTagName("tbody")[0].append(li)
+  };
+  function calculate() {
+    let els = field.getElementsByClassName('intern');
+    let arr = []
+    let fee = []
+    let deduction = []
+    for (let el of els) {
+      arr.push(isNaN(parseFloat(el.value)) ? 0 : parseFloat(el.value))
+    }
+    els = field.getElementsByClassName('fee');
+    for (let el = 0; el < els.length; el++) {
+      els[el].innerHTML = calculateFee(parseFloat(arr[el])).toFixed(2);
+      fee.push(calculateFee(parseFloat(arr[el])));
+    }
+    els = field.getElementsByClassName('deduction');
+    for (let el = 0; el < els.length; el++) {
+      els[el].innerHTML = 5000;
+      fee[el] = fee[el] + 5000
+    }
+    els = field.getElementsByClassName('rate');
+    let els2 = field.getElementsByClassName('deductionfee')
+    let els3 = field.getElementsByClassName('tax')
+    let [a, b, c] = calculateRate(arr)
+    for (let el = 0; el < els.length; el++) {
+      els[el].innerHTML = (a[el] * 100).toFixed(2) + '%'
+      els2[el].innerHTML = b[el]
+      els3[el].innerHTML = c[el].toFixed(2)
+    }
+  }
+  function calculateFee(fee) {
+    if (fee <= 4000) {
+      return 800;
+    } else {
+      return fee * 0.2
+    }
+  }
+  function calculateRate(salary) {
+    overall = 0
+    let rate = []
+    let dedu = []
+    let tax = []
+    for (let i = 0; i < salary.length; i++) {
+      overall += salary[i]
+      let fees = calculateFee(overall) + 5000 * (i + 1)
+      let [a, b, c] = countTax1(overall - fees)
+      rate.push(a)
+      dedu.push(b)
+      cum_prev_tax = 0
+      for (let j = 0; j < tax.length; j++) {
+        cum_prev_tax += tax[j]
+      }
+      let cum_tax = (c - cum_prev_tax)
+      if (cum_tax < 0) {
+        cum_tax = 0
+      }
+      tax.push(cum_tax)
+
+    }
+    return [rate, dedu, tax]
+  }
+
+  let taxRateTableOne = [
+    [0, 0, 0],
+    [36000, 0.03, 0],
+    [144000, 0.1, 2520],
+    [300000, 0.2, 16920],
+    [420000, 0.25, 31920],
+    [660000, 0.3, 52920],
+    [960000, 0.35, 85920],
+    [Infinity, 0.45, 181920]
+  ];
+
+
+
+  // 方法1:年终奖与工资汇总计算
+  function countTax1(salary) {
+    let total = salary;        // 总收入
+    let realTax = 0;                   // 实际税负
+    let i;
+    for (i = 0; i < taxRateTableOne.length; i++) {
+      if (total <= taxRateTableOne[i][0]) {     // 如果收入在该收入下限以内
+        realTax = total * taxRateTableOne[i][1] - taxRateTableOne[i][2];   // 计算实际税负
+        break;
+      }
+    }
+
+    return [taxRateTableOne[i][1], taxRateTableOne[i][2], realTax];
+  }
+
+  // 方法2:年终奖单独计税
+  function countTax2(salary, tax1, bonus) {
+    let tax2 = 0;                    // 年终奖实际税负 
+
+    bonus -= tax1;                  // 减去已交工资税税额
+
+    for (let i = 0; i < taxRate.length; i++) {
+      if (bonus <= taxRate[i][0]) {   // 如果年终奖在该收入下限以内  
+        tax2 = bonus * taxRate[i][1] - taxRate[i][2]; // 计算年终奖实际税负
+        break;
+      }
+    }
+
+    return tax2;
+  }
+</script>
