@@ -14,3 +14,7 @@ This is a platform for all readers to share knowledge and discussions. If you ha
 
 Have a nice journey!
 
+<script>
+    let e=document.getElementsByClassName('post-comments')[0]
+    e.setAttribute('style','display:none;')
+</script>
