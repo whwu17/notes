@@ -8,7 +8,11 @@ author: Wu Wenhan
 
 ## LaTeX公式正体
 
-公式移除斜体可使用以下命令：`$y = {\rm words_not_italics}(x)$`。
+公式移除斜体可使用以下命令：
+
+```tex
+$y = {\rm words_not_italics}(x)$
+```
 
 ## LaTeX的图表绘制
 
