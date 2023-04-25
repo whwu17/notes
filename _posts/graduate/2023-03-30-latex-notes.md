@@ -6,6 +6,9 @@ tags: [graduate]
 author: Wu Wenhan
 ---
 
+## LaTeX公式正体
+
+公式移除斜体可使用以下命令：`{rm words_not_italics}`。
 
 ## LaTeX的图表绘制
 
