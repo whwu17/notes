@@ -120,7 +120,7 @@ list相当于table中的不带字段名的一列，凡是带{}的都和list有�
 
 #### 不同数据结构之间的转换
 |函数名|解释|
-|---|---|
+|:---:|:---:|
 |Table.ToRows|转换成行的list表格|
 |Table.FromRows|从多行list创建表格|
 |Table.ToColumns|转换成列的list表格|
