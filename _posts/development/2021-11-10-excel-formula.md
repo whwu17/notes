@@ -52,7 +52,7 @@ author: Wu Wenhan
 
 > 注意：该函数与日常语言完全不同，属于函数式语言。在代码过程中，全部的函数都是static的，也就是说，该语言不允许创建任何的对象，所有的对象都必须来源于函数的输出，类似Pipeline的思想。这与面向对象的编程语言差别较大，如果使用过Builder设计模式，或者Javascript的函数闭包，可能会与本语言类似。
 
-```power query m
+```power-query-m
 let
     // Pre: Extract all sheet names in workbook, except for the first one used to set the result of this query.
     #"Fetch File Path"=(Table.SelectRows(Excel.CurrentWorkbook(),each [Name]="FILE_PATH"){0}[Content])[Column1]{0},
