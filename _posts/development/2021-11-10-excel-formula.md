@@ -18,8 +18,8 @@ disable: latex
 
 基本函数解释：
 - 统计整行：`$2:$2`。
-- MATCH(lookup_value, lookup_array, [match_type])函数：返回指定数值在指定数组区域中的位置，其中最后一个参数有三个值：-1（大于等于value的最小值）、0（严格等于）、1（小于等于value的最大值）。返回值从1开始。
-- OFFSET(reference,rows,cols,height,width)函数：以指定的引用为参照系，通过给定偏移量得到新的引用（后四个参数均可为负数）。
+- `MATCH(lookup_value, lookup_array, [match_type])`函数：返回指定数值在指定数组区域中的位置，其中最后一个参数有三个值：-1（大于等于value的最小值）、0（严格等于）、1（小于等于value的最大值）。返回值从1开始。
+- `OFFSET(reference,rows,cols,height,width)`函数：以指定的引用为参照系，通过给定偏移量得到新的引用（后四个参数均可为负数）。
 
 例如：
 - `[Range1]=OFFSET($A$3,0,MATCH($M$2,$2:$2,0)-1,ROW_CNT,1)`，该函数从`A3`单元格开始，偏移至【M2单元格的值在第二行首次出现的单元格的位置】单元格的前一格，再框选出ROW_CNT\*1的矩形内的数据。由于`MATCH`函数返回值从1开始，而单元格偏移从0开始，因此需要-1。由此也可以看出，该函数的本质实际上是选中指定的某一列，这一列是`M2`单元格名字所规定的。
