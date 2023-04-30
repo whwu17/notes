@@ -72,7 +72,7 @@ let
     // Post: Remove other columns and blank rows, group by the first column and rename the column for user-friendly.
     #"Selected Required Columns" = Table.SelectColumns(#"Merged Columns",{"需要输出的字段"}),
     #"Removed Blank Rows" = Table.SelectRows(#"Selected Required Columns", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null})) ),
-    #"Grouped Rows" = Table.Group(#"Removed Blank Rows", {"输出字段1"}, {{"输出字段2", each List.Sum([输出字段2]), type number}})
+    #"Grouped Rows" = Table.Group(#"Removed Blank Rows", {"输出字段1"}, { {"输出字段2", each List.Sum([输出字段2]), type number} })
 in
     #"Grouped Rows"
 ```
@@ -88,11 +88,11 @@ in
 
 有行有列即为table。
 
-创建Table：`Table = #table({字段名},{{行数据},{行数据}})`
+创建Table：`Table = #table({字段名},{ {行数据},{行数据} })`
 – 字段名相当于是行标题
 – 行数据，相当于一行的数据
 
-例：`A = #table({"产品","数量"},{{"a",10},{"b",20}})`
+例：`A = #table({"产品","数量"},{ {"a",10},{"b",20} })`
 
 #### Record
 
