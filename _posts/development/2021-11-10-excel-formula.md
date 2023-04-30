@@ -3,6 +3,7 @@ title: Excel formulas for advanced calculation
 categories: excel
 tags: excel, office, formula, power query
 author: Wu Wenhan
+disable: latex
 ---
 
 ## Summation w/o pivot table
