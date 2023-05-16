@@ -1,7 +1,7 @@
 ---
 title: Experiment on rats
 categories: excerpt
-authors: John Calboun
+author: John Calboun
 ---
 
 ## Mole - Oblomov - Universe 25
