@@ -12,7 +12,7 @@ author: Wu Wenhan
 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 
 if [[ "$(BRANCH_NAME)" =~ ^[A-Z]{4,}-[[:digit:]]+ ]]; then
-  ISSUE_IDENTIFIER="${BASH_REMATCH[0]]"
+  ISSUE_IDENTIFIER="${BASH_REMATCH[0]}"
 fi
 if [[ -n $ISSUE_IDENTIFIER ]]; then
   sed -i.bak -e "1s/^/$ISSUE_IDENTIFIER /" $1
