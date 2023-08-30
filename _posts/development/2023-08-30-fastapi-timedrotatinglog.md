@@ -62,7 +62,7 @@ atTime：用来设置轮转时间，格式为 ‘%H:%M:%S’，默认为午夜 1
 现在我们要做的就是首先认为文件存在即是已经有人 rename 成功过了，并且在判断文件不存在的时候只允许一个人去 rename ，其他进程如果正好进入临界区就等一等。
 
 ## 修改后代码
-```
+```python
 class MultiCompatibleTimedRotatingFileHandler(TimedRotatingFileHandler):
 
     def doRollover(self):
