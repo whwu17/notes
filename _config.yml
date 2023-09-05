@@ -221,7 +221,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      categories: "Default"
+      categories: ["Default"]
 
 # Build settings
 # highlighter: none
