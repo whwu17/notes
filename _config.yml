@@ -156,7 +156,7 @@ header_pages:
 defaults:
   - 
     scope:
-      path: "/index.html"
+      path: "/"
     values:
       home:
         heading: "Notes and Blogs"
