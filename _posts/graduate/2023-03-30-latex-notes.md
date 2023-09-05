@@ -1,7 +1,7 @@
 ---
 layout: post
 title: LaTeX Notes, including figures and tables
-categories: Postgraduate
+category: Postgraduate
 tags: [graduate]
 author: Wu Wenhan
 ---

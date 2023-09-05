@@ -2,7 +2,7 @@
 layout:     post
 title:      Springboot to server
 author:     Fairy17
-categories: Development
+category: Development
 tags:
     - springBoot
     - server

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Multiprocess problem in FastAPI TimedRotatingFileHandler
-categories: Development
+category: Development
 tags: [develop, fastapi]
 author: Wu Wenhan, weixin_34041003
 ---

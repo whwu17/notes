@@ -2,11 +2,11 @@
 layout: post
 title: China Tax Income Calculation
 author: 国家税务总局，上海税务公众号，必信天诚·邱兰
-categories: work
+category: work
 tags: salary work
 ---
 
-薪资与个税与每个人的生活都息息相关。不论是实习工资还是正式工资，其计算方式都十分复杂。特别是在年终奖的清算中，选择合适的方式有助于实际的退税额。本文将描述所有可能的个人所得税计算方式。目前，也有很多工具支持在线计算，可参考以下链接：
+本文将描述所有可能的个人所得税计算方式。在线计算工具参考以下链接：
 - 一般工资计算器：<https://linbrick.github.io/income-tax-calculation/#/>
 - 个税专项附加扣除计算器：<http://shui.bkt123.com/geshuifujia/>
 - 年终奖计算器：<http://shui.00cha.net/nzj.asp>

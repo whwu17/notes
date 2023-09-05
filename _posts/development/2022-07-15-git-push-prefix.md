@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Prefix for GitHub submits
-categories: Development
+category: Development
 tags: [develop, git]
 author: Wu Wenhan
 ---

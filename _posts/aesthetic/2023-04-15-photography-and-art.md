@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Excerpt for photography and art
-categories: Aesthetic
+category: Aesthetic
 tags: [aesthetic]
 author: Hong Wu
 ---

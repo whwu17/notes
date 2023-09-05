@@ -1,6 +1,5 @@
 ---
 layout: framework
-banner:
 banner_html: post-header.html
 hidden: []
 sidebar:
@@ -22,7 +21,7 @@ sidebar:
     {%- if banner == nil and result.size == 0 -%}
     {%- include views/post-header.html -%}
     {%- endif -%}
-
+    
     {%- include views/article.html -%}
 
     {%- assign result = hidden | where_exp: "item", "item == 'navigator'" -%}

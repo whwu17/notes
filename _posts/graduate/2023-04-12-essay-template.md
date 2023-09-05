@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Graduated-related sites and materials
-categories: Postgraduate
+category: Postgraduate
 tags: [essay, graduate]
 author: Wu Wenhan
 ---

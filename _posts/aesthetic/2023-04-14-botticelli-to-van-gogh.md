@@ -1,7 +1,7 @@
 ---
 layout: post
 title: From Botticelli to Van Gogh
-categories: Aesthetic
+category: Aesthetic
 tags: [aesthetic]
 author: Red@4277933430
 ---

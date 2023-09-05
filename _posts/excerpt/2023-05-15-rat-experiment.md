@@ -1,6 +1,6 @@
 ---
 title: Experiment on rats
-categories: excerpt
+category: excerpt
 author: John Calboun
 ---
 

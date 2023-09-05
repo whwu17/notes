@@ -1,6 +1,6 @@
 ---
 title: Excel formulas for advanced calculation
-categories: excel
+category: excel
 tags: excel office formula power query
 author: Wu Wenhan
 disable: latex

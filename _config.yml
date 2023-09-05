@@ -164,7 +164,7 @@ defaults:
       path: "_posts"
     values:
       layout: "post"
-      categories: "Default"
+      category: "Default"
 
 # Banner default settings
 # These banner settings are for global banner default, but you can also

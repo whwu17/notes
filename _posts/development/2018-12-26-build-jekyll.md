@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Build Jekyll in Windows
-categories: Development
+category: Development
 tags: [develop, blog]
 author: Wu Wenhan
 ---
