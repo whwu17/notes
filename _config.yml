@@ -155,13 +155,13 @@ header_pages:
 # Page default value
 defaults:
   - scope:
-      path: "/"
+      path: "index.html"
     values:
       heading: "Notes and Blogs"
       subheading: "Space for sharing perspectives and ideas."
       banner: "/assets/images/banners/home.jpg"
   - scope:
-      type: "posts"
+      type: posts
     values:
       layout: "post"
       categories: "Default"
