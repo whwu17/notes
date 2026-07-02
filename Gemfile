@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 
 gem 'jekyll', '3.9.2'
 
+# webrick is required by `jekyll serve` but was removed from Ruby's stdlib in Ruby 3.0+
+gem 'webrick', '~> 1.8'
+
 group :jekyll_plugins do
   gem 'jekyll-archives', '2.1.1'
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
