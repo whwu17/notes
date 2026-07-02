@@ -10,9 +10,6 @@ gem 'webrick', '~> 1.8'
 # keeps compiling without a Sass rewrite.
 gem 'jekyll-sass-converter', '~> 2.0'
 
-# webrick is required by `jekyll serve` but was removed from Ruby's stdlib in Ruby 3.0+
-gem 'webrick', '~> 1.8'
-
 group :jekyll_plugins do
   gem 'jekyll-archives', '~> 2.2'
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
