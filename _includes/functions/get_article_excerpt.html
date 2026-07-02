@@ -19,7 +19,47 @@
 {%- include functions.html func='get_article_words' -%}
 {% assign words = return %}
 
-{% assign _article = article | strip_html %}
+{%- comment -%}
+  Build a clean, prose-only excerpt. The rendered article HTML often begins with
+  a heading that duplicates the post title and contains code blocks / tables /
+  formulas that turn into unreadable noise once the tags are stripped. Remove
+  those block elements first, then add spacing at block boundaries so the text
+  doesn't run together.
+{%- endcomment -%}
+{% assign _clean = article %}
+{% assign _drop_blocks = 'pre|table|h1|h2|h3|h4|h5|h6|figure' | split: '|' %}
+{% for _b in _drop_blocks %}
+  {% assign _open = '<' | append: _b %}
+  {% assign _close = '</' | append: _b | append: '>' %}
+  {% if _clean contains _open %}
+    {% assign _parts = _clean | split: _close %}
+    {% capture _clean %}{% for _p in _parts %}{% assign _seg = _p | split: _open %}{{ _seg[0] }}{% endfor %}{% endcapture %}
+  {% endif %}
+{% endfor %}
+
+{% assign _clean = _clean
+  | replace: '</p>', ' '
+  | replace: '</li>', ' '
+  | replace: '</td>', ' '
+  | replace: '</th>', ' '
+  | replace: '</blockquote>', ' '
+  | replace: '</div>', ' '
+  | replace: '<br>', ' '
+  | replace: '<br/>', ' '
+  | replace: '<br />', ' ' %}
+
+{% assign _article = _clean
+  | strip_html
+  | strip_newlines
+  | replace: '  ', ' '
+  | replace: '  ', ' '
+  | strip %}
+
+{%- comment -%} Fall back to the raw stripped content if cleaning left nothing. {%- endcomment -%}
+{% if _article == '' %}
+  {% assign _article = article | strip_html | strip %}
+{% endif %}
+
 {% assign _words = _article | size %}
 
 {% assign _size = excerpt_size %}
