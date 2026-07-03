@@ -47,7 +47,7 @@ description: >- # this means to ignore newlines until "baseurl:", this is only f
 
 baseurl: "/notes" # the subpath of your site, e.g. /blog
 url: "https://whwu17.github.io" # the base hostname & protocol for your site, e.g. https://example.com
-favicon: "" # the favicon for your site
+favicon: "/assets/images/favicon.svg" # the favicon for your site
 
 # Yat date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
@@ -66,8 +66,8 @@ yat:
 # Google analytics
 google_analytics: G-5DS6WE929L # G-TAG, namely the MEASUREMENT ID
 
-# If you want to generate website sitemap, you can set true
-sitemap: false
+# Sitemap generation is handled by the jekyll-sitemap plugin (see `plugins`
+# below). To exclude a specific page, set `sitemap: false` in its front matter.
 
 # If you want to change site language, you can set lang option
 # lang: "en"  # default lang is en
@@ -149,11 +149,17 @@ header_pages:
   - categories.html
   - timeline.html
   - tags.html
+  - search.html
   - about.md
   - exit.html
 
 # Page default value
 defaults:
+  - scope:
+      path: ""
+    values:
+      # Default social-share/OG image used by jekyll-seo-tag (override per page with `image`)
+      image: "/assets/images/banners/home.jpg"
   - scope:
       path: "index.html"
     values:
