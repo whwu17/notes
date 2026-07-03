@@ -9,8 +9,8 @@
 <div class="page-segments">
   <ul class="page-segments-list">
     {% for key in keys %}
-    <h2 id="{{ key }}" class="segment-name">{{ key | capitalize }}</h2>
       {% assign items = site.posts | where: field, key %}
+    <h2 id="{{ key }}" class="segment-name">{{ key | capitalize }} <span class="segment-count">{{ items | size }}</span></h2>
       {% for item in items %}
         {% if item != nil %}
         <li> {% include views/post-item.html %} </li>

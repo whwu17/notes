@@ -44,12 +44,31 @@ sidebar:
 
     {%- assign result = hidden | where_exp: "item", "item == 'related_posts'" -%}
     {%- if result.size == 0 -%}
+    {%- comment -%} Build a list of posts that share tags with the current one. {%- endcomment -%}
+    {%- assign related = "" | split: "" -%}
+    {%- for tag in page.tags -%}
+      {%- assign tagged = site[page.collection] | where_exp: "p", "p.tags contains tag" -%}
+      {%- for p in tagged -%}
+        {%- unless p.url == page.url -%}
+          {%- assign related = related | push: p -%}
+        {%- endunless -%}
+      {%- endfor -%}
+    {%- endfor -%}
+    {%- assign related = related | uniq -%}
+
+    {%- if related.size > 0 -%}
+      {%- assign related_title = "Related Articles" -%}
+    {%- else -%}
+      {%- comment -%} Fall back to the most recent posts (current one excluded). {%- endcomment -%}
+      {%- assign related = site[page.collection] | where_exp: "p", "p.url != page.url" -%}
+      {%- assign related_title = "Recent Articles" -%}
+    {%- endif -%}
+
     <div class="post-related">
-      <div>Newest Articles</div>
+      <div>{{ related_title }}</div>
       <ul>
-        {% assign posts = site[page.collection] | sample:4 %}
-        {%- for post in posts -%}
-        <li><a class="post-link" href="{{post.url | relative_url}}" title="{{ page.next.title | escape }}">{{ post.title | escape | truncatewords: 12 }}</a></li>
+        {%- for post in related limit: 4 -%}
+        <li><a class="post-link" href="{{ post.url | relative_url }}" title="{{ post.title | escape }}">{{ post.title | escape | truncatewords: 12 }}</a></li>
         {%- endfor -%}
       </ul>
     </div>

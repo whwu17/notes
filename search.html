@@ -1,0 +1,22 @@
+---
+layout: framework
+title: Search
+---
+
+<div class="search-page" data-search-json="{{ '/search.json' | relative_url }}">
+  <div class="post-menu" style="padding: 0; padding-bottom: 15px;">
+    <div class="post-menu-title" style="margin: 0">{{ page.title }}</div>
+  </div>
+
+  <div class="search-box">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" id="search-input" class="search-input"
+      placeholder="Search notes by title, tag or content..." autocomplete="off" autofocus />
+  </div>
+
+  <p id="search-status" class="search-status"></p>
+
+  <ul id="search-results" class="search-results post-list"></ul>
+</div>
+
+<script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>
