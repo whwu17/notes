@@ -20,7 +20,8 @@
   {%- assign return = include.default -%}
 {%- endif -%}
 
-{%- if func != 'log' -%}
+{%- comment -%} Only build the (debug-only) log message when debugging is enabled. {%- endcomment -%}
+{%- if func != 'log' and site.debug -%}
   {%- assign msg = '[function]['
     | append: {{func}}
     | append: '] '
