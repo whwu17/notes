@@ -18,8 +18,9 @@
     </li>
 
     {% for key in  keys %}
+      {%- assign segment_id = key | slugify -%}
       <li>
-        <a href="{{ url }}#h-{{ key }}">
+        <a href="{{ url }}#h-{{ segment_id }}">
           {{ key }} <span>{{ site.posts | where: field, key | size }}</span>
         </a>
       </li>

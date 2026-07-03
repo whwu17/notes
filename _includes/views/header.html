@@ -33,10 +33,14 @@
           </label>
 
           <div class="trigger">
+            <button id="site-search-trigger" class="page-link site-search-trigger" type="button" aria-label="Search posts" title="Search (Ctrl+K)">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              <span class="site-search-trigger-label">Search</span>
+            </button>
             {%- for path in page_paths -%}
               {%- assign my_page = site.pages | where: "path", path | first -%}
               {%- if my_page.title -%}
-              <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | camelcase | escape }}</a>
+              {%- include views/nav-link.html page=my_page -%}
               {%- endif -%}
             {%- endfor -%}
 

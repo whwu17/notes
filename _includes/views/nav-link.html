@@ -1,0 +1,11 @@
+{%- assign my_page = include.page -%}
+{%- assign nav_label = my_page.title | camelcase | escape -%}
+{%- case my_page.path -%}
+{%- when 'categories.html' -%}
+  {%- capture nav_label -%}{{ my_page.title | camelcase | escape }} ({{ site.categories.size }}){%- endcapture -%}
+{%- when 'tags.html' -%}
+  {%- capture nav_label -%}{{ my_page.title | camelcase | escape }} ({{ site.tags.size }}){%- endcapture -%}
+{%- when 'timeline.html' -%}
+  {%- capture nav_label -%}{{ my_page.title | camelcase | escape }} ({{ site.posts.size }}){%- endcapture -%}
+{%- endcase -%}
+<a class="page-link" href="{{ my_page.url | relative_url }}">{{ nav_label }}</a>

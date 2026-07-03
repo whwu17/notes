@@ -20,11 +20,7 @@
   {%- assign return = include.default -%}
 {%- endif -%}
 
-{%- if func != 'log' -%}
-  {%- assign msg = '[function]['
-    | append: {{func}}
-    | append: '] '
-    | append: {{return}}
-    -%}
-  {%- include functions.html func='log' level='info' -%}
+{%- if site.debug == true and func != 'log' -%}
+  {%- capture _func_log_msg -%}[function][{{ func }}] {{ return }}{%- endcapture -%}
+  {%- include functions/log.html level='info' msg=_func_log_msg -%}
 {%- endif -%}

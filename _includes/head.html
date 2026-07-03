@@ -4,11 +4,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
   {%- seo -%}
-  <link rel="icon" href="{{ site.favicon }}">
+  {%- if site.favicon != blank -%}
+  <link rel="icon" href="{{ site.favicon | relative_url }}" type="image/svg+xml">
+  {%- endif -%}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
   <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script>
+  <script src="{{ "/assets/js/search.js" | relative_url }}" defer></script>
   {%- feed_meta -%}
   {%- include extensions/code-highlight.html -%}
   {%- include custom-head.html -%}
