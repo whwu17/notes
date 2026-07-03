@@ -1,13 +1,2 @@
-{%- if include.item -%}
-  {%- assign item = include.item -%}
-{%- endif -%}
-
-{%- assign post = item -%}
-
-{% assign date_format = site.yat.date_format | default: "%b %-d, %Y" %}
-<span class="post-meta">{{ post.date | date: date_format }}</span>
-<span>
-  <a class="post-link" href="{{ post.url | relative_url }}">
-    {{ post.title | escape }}
-  </a>
-</span>
+{%- assign post = include.post | default: item -%}
+{%- include views/post-card.html post=post variant='compact' -%}

@@ -1,0 +1,34 @@
+{%- assign post = include.post -%}
+{%- assign variant = include.variant | default: 'full' -%}
+{%- assign date_format = site.yat.date_format | default: "%b %-d, %Y" -%}
+{%- assign post_url = post.url | relative_url -%}
+
+{%- if variant == 'compact' -%}
+<span class="post-meta">{{ post.date | date: date_format }}</span>
+<span>
+  <a class="post-link" href="{{ post_url }}">{{ post.title | escape }}</a>
+</span>
+{%- else -%}
+<h2 class="post-title">
+  <a class="post-link" href="{{ post_url }}">{{ post.title | escape }}</a>
+</h2>
+<div class="post-meta">
+  <span class="post-date right-vsplit"><i class="fa fa-calendar"></i> {{ post.date | date: date_format }}</span>
+  {% assign article = post.content %}
+  {% assign lang = post.lang %}
+  {%- include functions.html func='get_reading_time' -%}
+  <span class="post-reading-time"><i class="fa fa-clock-o"></i> {{ return }}</span>
+</div>
+{%- include functions.html func='get_article_excerpt' -%}
+<p class="post-excerpt">
+  {{ return }}
+  <a class="read-more-link" href="{{ post_url }}">Read More</a>
+</p>
+{%- if post.tags.size > 0 -%}
+<div class="post-tags">
+  {%- for tag in post.tags -%}
+  <a class="post-tag" href="{{ '/tags.html' | relative_url }}#h-{{ tag | slugify }}">#{{ tag }}</a>
+  {%- endfor -%}
+</div>
+{%- endif -%}
+{%- endif -%}

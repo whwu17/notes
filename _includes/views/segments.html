@@ -9,13 +9,22 @@
 <div class="page-segments">
   <ul class="page-segments-list">
     {% for key in keys %}
-    <h2 id="{{ key }}" class="segment-name">{{ key | capitalize }}</h2>
-      {% assign items = site.posts | where: field, key %}
-      {% for item in items %}
-        {% if item != nil %}
-        <li> {% include views/post-item.html %} </li>
-        {% endif %}
-      {% endfor %}
+    {%- assign segment_id = key | slugify -%}
+    {%- assign items = site.posts | where: field, key -%}
+    <li class="page-segment">
+      <h2 id="h-{{ segment_id }}" class="segment-name">{{ key | capitalize }} <span class="segment-count">({{ items.size }})</span></h2>
+      {%- if items.size > 0 -%}
+      <ul class="segment-posts">
+        {% for item in items %}
+          {% if item != nil %}
+          <li>{%- include views/post-item.html post=item -%}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      {%- else -%}
+      <p class="taxonomy-empty">No posts in this group.</p>
+      {%- endif -%}
+    </li>
     {% endfor %}
   </ul>
 </div>

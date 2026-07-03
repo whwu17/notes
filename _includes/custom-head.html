@@ -1,6 +1,20 @@
 {% comment %}
-  Placeholder to allow defining custom head, in principle, you can add anything here, e.g. favicons:
-
-  1. Head over to https://realfavicongenerator.net/ to add your own favicons.
-  2. Customize default _includes/custom-head.html in your source directory and insert the given code snippet.
+  Open Graph / Twitter image fallbacks when jekyll-seo-tag has no page.image.
+  Home uses the site default banner; posts prefer their banner image when set.
 {% endcomment %}
+{%- assign og_image = site.default_og_image -%}
+{%- if page.image -%}
+  {%- assign og_image = page.image -%}
+{%- elsif page.banner -%}
+  {%- if page.banner.image and page.banner.image != 'transparent' -%}
+    {%- assign og_image = page.banner.image -%}
+  {%- elsif page.banner contains '/' -%}
+    {%- assign og_image = page.banner -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if og_image -%}
+  {%- capture og_image_url -%}{{ og_image | absolute_url }}{%- endcapture -%}
+  <meta property="og:image" content="{{ og_image_url }}">
+  <meta name="twitter:image" content="{{ og_image_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+{%- endif -%}

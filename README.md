@@ -5,7 +5,7 @@
 - Support beautiful **Night Mode**.
 - Modern responsive web design.
 - Full layouts `home`, `post`, `tags`, `timeline` and `about`.
-- Uses font awesome 5 for icons.
+- Uses Font Awesome 4.7 for icons.
 - Beautiful page banner with image and video.
 - Beautiful Syntax Highlight using [highlight.js][highlight-js].
 - RSS support using [Jekyll Feed][jekyll-feed] gem.

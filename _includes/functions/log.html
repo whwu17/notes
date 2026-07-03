@@ -1,8 +1,12 @@
-{% if include.params.level %}
+{% if include.level %}
+  {% assign level = include.level %}
+{% elsif include.params.level %}
   {% assign level = include.params.level %}
 {% endif %}
 
-{% if include.params.msg %}
+{% if include.msg %}
+  {% assign msg = include.msg %}
+{% elsif include.params.msg %}
   {% assign msg = include.params.msg %}
 {% endif %}
 

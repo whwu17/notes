@@ -1,0 +1,39 @@
+{%- assign max_related = 4 -%}
+{%- assign related_urls = "" -%}
+{%- for candidate in site.posts -%}
+  {%- if candidate.url == page.url -%}{%- continue -%}{%- endif -%}
+  {%- assign matched = false -%}
+  {%- if page.category and candidate.category == page.category -%}
+    {%- assign matched = true -%}
+  {%- endif -%}
+  {%- for tag in page.tags -%}
+    {%- if candidate.tags contains tag -%}
+      {%- assign matched = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if matched -%}
+    {%- assign related_urls = related_urls | append: candidate.url | append: "||" -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign related_url_list = related_urls | split: "||" -%}
+
+{%- if related_url_list.size > 0 -%}
+<div class="post-related">
+  <div>Related Articles</div>
+  <ul>
+    {%- for url in related_url_list limit: max_related -%}
+      {%- if url != blank -%}
+        {%- assign related_post = site.posts | where: "url", url | first -%}
+        {%- if related_post -%}
+        <li>
+          <a class="post-link" href="{{ related_post.url | relative_url }}" title="{{ related_post.title | escape }}">
+            {{ related_post.title | escape | truncatewords: 12 }}
+          </a>
+        </li>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>
+{%- endif -%}
