@@ -4,9 +4,6 @@
 
   var input = searchRoot.querySelector('.site-search-input');
   var resultsEl = searchRoot.querySelector('.site-search-results');
-  var dialog = searchRoot.querySelector('.site-search-dialog');
-  var trigger = document.getElementById('site-search-trigger');
-  var closeBtn = searchRoot.querySelector('.site-search-close');
   var index = null;
   var documents = [];
   var baseUrl = searchRoot.getAttribute('data-baseurl') || '/';
@@ -18,23 +15,17 @@
 
   baseUrl = normalizeBaseUrl(baseUrl);
 
-  function setOpen(isOpen) {
-    searchRoot.classList.toggle('is-open', isOpen);
-    dialog.hidden = !isOpen;
-    if (isOpen) {
-      input.focus();
-      input.select();
-    } else {
-      input.value = '';
-      resultsEl.innerHTML = '';
-      resultsEl.hidden = true;
-    }
+  function clearResults() {
+    resultsEl.innerHTML = '';
+    resultsEl.hidden = true;
+    searchRoot.classList.remove('has-results');
   }
 
   function renderResults(matches) {
     if (!matches.length) {
       resultsEl.innerHTML = '<p class="site-search-empty">No matching posts.</p>';
       resultsEl.hidden = false;
+      searchRoot.classList.add('has-results');
       return;
     }
 
@@ -52,6 +43,7 @@
     html += '</ul>';
     resultsEl.innerHTML = html;
     resultsEl.hidden = false;
+    searchRoot.classList.add('has-results');
   }
 
   function escapeHtml(text) {
@@ -87,8 +79,7 @@
     if (!index) return;
     var trimmed = query.trim();
     if (!trimmed) {
-      resultsEl.innerHTML = '';
-      resultsEl.hidden = true;
+      clearResults();
       return;
     }
 
@@ -101,6 +92,7 @@
     } catch (e) {
       resultsEl.innerHTML = '<p class="site-search-empty">No matching posts.</p>';
       resultsEl.hidden = false;
+      searchRoot.classList.add('has-results');
     }
   }
 
@@ -117,43 +109,23 @@
       .catch(function () {
         resultsEl.innerHTML = '<p class="site-search-empty">Search is temporarily unavailable.</p>';
         resultsEl.hidden = false;
+        searchRoot.classList.add('has-results');
       });
   }
 
-  if (trigger) {
-    trigger.addEventListener('click', function (event) {
-      event.preventDefault();
-      loadIndex().then(function () {
-        setOpen(true);
-      });
-    });
-  }
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function () {
-      setOpen(false);
-    });
-  }
-
-  searchRoot.addEventListener('click', function (event) {
-    if (event.target === searchRoot) {
-      setOpen(false);
+  document.addEventListener('click', function (event) {
+    if (!searchRoot.contains(event.target)) {
+      clearResults();
     }
   });
 
-  document.addEventListener('keydown', function (event) {
-    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
-      event.preventDefault();
-      loadIndex().then(function () {
-        setOpen(true);
-      });
-    }
-    if (event.key === 'Escape') {
-      setOpen(false);
-    }
+  input.addEventListener('focus', function () {
+    loadIndex();
   });
 
   input.addEventListener('input', function () {
-    runSearch(input.value);
+    loadIndex().then(function () {
+      runSearch(input.value);
+    });
   });
 })();
