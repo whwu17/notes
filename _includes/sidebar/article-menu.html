@@ -117,7 +117,7 @@
       }
       if(event!=null) event.preventDefault();
     }
-    window.addEventListener('scroll', ff);
+    bindScrollListener(ff);
     ff();
   }
   generateContent();

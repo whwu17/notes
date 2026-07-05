@@ -7,8 +7,6 @@
   var index = null;
   var documents = [];
   var baseUrl = searchRoot.getAttribute('data-baseurl') || '/';
-  var scrollLockY = 0;
-  var isTouch = window.matchMedia('(pointer: coarse)').matches;
 
   function normalizeBaseUrl(url) {
     if (!url) return '/';
@@ -121,25 +119,8 @@
     }
   });
 
-  input.addEventListener('touchstart', function () {
-    if (!isTouch) return;
-    lockScroll();
-  }, { passive: true });
-
   input.addEventListener('focus', function () {
     loadIndex();
-    if (isTouch) {
-      lockScroll();
-    }
-    searchRoot.classList.add('is-keyboard-open');
-  });
-
-  input.addEventListener('blur', function () {
-    window.setTimeout(function () {
-      if (document.activeElement === input) return;
-      unlockScroll();
-      searchRoot.classList.remove('is-keyboard-open');
-    }, 0);
   });
 
   input.addEventListener('input', function () {
@@ -147,27 +128,4 @@
       runSearch(input.value);
     });
   });
-
-  function lockScroll() {
-    if (document.documentElement.classList.contains('site-search-scroll-lock')) return;
-    scrollLockY = window.scrollY;
-    document.documentElement.classList.add('site-search-scroll-lock');
-    document.body.classList.add('site-search-scroll-lock');
-    document.body.style.top = -scrollLockY + 'px';
-  }
-
-  function unlockScroll() {
-    if (!document.documentElement.classList.contains('site-search-scroll-lock')) return;
-    document.documentElement.classList.remove('site-search-scroll-lock');
-    document.body.classList.remove('site-search-scroll-lock');
-    document.body.style.top = '';
-    window.scrollTo(0, scrollLockY);
-  }
-
-  if (window.visualViewport && isTouch) {
-    window.visualViewport.addEventListener('scroll', function () {
-      if (document.activeElement !== input) return;
-      window.scrollTo(0, scrollLockY);
-    });
-  }
 })();

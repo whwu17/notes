@@ -8,7 +8,7 @@
   height: 64px;
   border-radius: 32px;
   right: 60px;
-  bottom: 48px;
+  bottom: calc(48px + 64px + env(safe-area-inset-bottom, 0px));
   background: white;
   cursor: pointer;
   opacity: 0;
@@ -22,6 +22,7 @@
     height: 48px;
     border-radius: 24px;
     right: 35px;
+    bottom: calc(48px + 64px + env(safe-area-inset-bottom, 0px));
     font-size: 20px;
   }
 
@@ -30,6 +31,7 @@
     height: 36px;
     border-radius: 18px;
     right: 20px;
+    bottom: calc(36px + 64px + env(safe-area-inset-bottom, 0px));
     font-size: 16px;
   }
 }

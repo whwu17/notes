@@ -14,8 +14,17 @@ if (!Element.prototype.matches) {
     };
 }
 
+function getScrollContainer() {
+  return document.querySelector('.site-scroll-area');
+}
+
 // Get Scroll position
 function getScrollPos() {
+  var container = getScrollContainer();
+  if (container) {
+    return { x: container.scrollLeft, y: container.scrollTop };
+  }
+
   var supportPageOffset = window.pageXOffset !== undefined;
   var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
 
@@ -31,6 +40,7 @@ var _scrollTimer = [];
 function smoothScrollTo(y, time) {
   time = time == undefined ? 500 : time;
 
+  var container = getScrollContainer();
   var scrollPos = getScrollPos();
   var count = 60;
   var length = (y - scrollPos.y);
@@ -47,12 +57,29 @@ function smoothScrollTo(y, time) {
     (function() {
       var cur = i;
       _scrollTimer[cur] = setTimeout(function() {
+        if (container) {
+          container.scrollTo(
+            scrollPos.x,
+            scrollPos.y + length * easeInOut(cur / count)
+          );
+          return;
+        }
+
         window.scrollTo(
           scrollPos.x,
-          scrollPos.y + length * easeInOut(cur/count)
+          scrollPos.y + length * easeInOut(cur / count)
         );
       }, (time / count) * cur);
     })();
   }
 }
 
+function bindScrollListener(callback) {
+  var container = getScrollContainer();
+  if (container) {
+    container.addEventListener('scroll', callback);
+    return;
+  }
+
+  window.addEventListener('scroll', callback);
+}
