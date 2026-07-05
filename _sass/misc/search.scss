@@ -9,6 +9,23 @@
   border-top: 1px solid #e5e5e5;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(8px);
+
+  &.is-keyboard-open {
+    bottom: var(--keyboard-offset, 0);
+    padding-bottom: 10px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      height: var(--keyboard-offset, 0);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+  }
 }
 
 .site-search-bar-inner {
@@ -140,6 +157,10 @@ body {
   .site-search-bar {
     background: rgba(24, 24, 24, 0.96);
     border-top-color: #333;
+
+    &.is-keyboard-open::after {
+      background: rgba(24, 24, 24, 0.96);
+    }
   }
 
   .site-search-input,

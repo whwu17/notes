@@ -121,6 +121,11 @@
 
   input.addEventListener('focus', function () {
     loadIndex();
+    updateKeyboardCover();
+  });
+
+  input.addEventListener('blur', function () {
+    resetKeyboardCover();
   });
 
   input.addEventListener('input', function () {
@@ -128,4 +133,28 @@
       runSearch(input.value);
     });
   });
+
+  function updateKeyboardCover() {
+    var viewport = window.visualViewport;
+    if (!viewport) return;
+
+    var offset = Math.max(0, window.innerHeight - viewport.offsetTop - viewport.height);
+    if (offset > 0) {
+      searchRoot.style.setProperty('--keyboard-offset', offset + 'px');
+      searchRoot.classList.add('is-keyboard-open');
+      return;
+    }
+
+    resetKeyboardCover();
+  }
+
+  function resetKeyboardCover() {
+    searchRoot.style.removeProperty('--keyboard-offset');
+    searchRoot.classList.remove('is-keyboard-open');
+  }
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', updateKeyboardCover);
+    window.visualViewport.addEventListener('scroll', updateKeyboardCover);
+  }
 })();
