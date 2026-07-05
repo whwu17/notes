@@ -7,6 +7,14 @@
   var index = null;
   var documents = [];
   var baseUrl = searchRoot.getAttribute('data-baseurl') || '/';
+  var keyboardShield = document.createElement('div');
+  var scrollLockY = 0;
+  var keyboardRaf = 0;
+
+  keyboardShield.className = 'site-search-keyboard-shield';
+  keyboardShield.hidden = true;
+  keyboardShield.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(keyboardShield);
 
   function normalizeBaseUrl(url) {
     if (!url) return '/';
@@ -121,40 +129,97 @@
 
   input.addEventListener('focus', function () {
     loadIndex();
-    updateKeyboardCover();
+    lockScroll();
+    scheduleKeyboardLayout();
   });
 
   input.addEventListener('blur', function () {
-    resetKeyboardCover();
+    window.setTimeout(function () {
+      if (document.activeElement === input) return;
+      resetKeyboardCover();
+    }, 0);
   });
 
   input.addEventListener('input', function () {
     loadIndex().then(function () {
       runSearch(input.value);
+      scheduleKeyboardLayout();
     });
   });
 
-  function updateKeyboardCover() {
-    var viewport = window.visualViewport;
-    if (!viewport) return;
+  function isSearchFocused() {
+    return document.activeElement === input;
+  }
 
-    var offset = Math.max(0, window.innerHeight - viewport.offsetTop - viewport.height);
-    if (offset > 0) {
-      searchRoot.style.setProperty('--keyboard-offset', offset + 'px');
-      searchRoot.classList.add('is-keyboard-open');
+  function lockScroll() {
+    if (document.body.classList.contains('site-search-scroll-lock')) return;
+    scrollLockY = window.scrollY;
+    document.body.classList.add('site-search-scroll-lock');
+    document.body.style.top = -scrollLockY + 'px';
+  }
+
+  function unlockScroll() {
+    if (!document.body.classList.contains('site-search-scroll-lock')) return;
+    document.body.classList.remove('site-search-scroll-lock');
+    document.body.style.top = '';
+    window.scrollTo(0, scrollLockY);
+  }
+
+  function scheduleKeyboardLayout() {
+    updateKeyboardLayout();
+    if (keyboardRaf) cancelAnimationFrame(keyboardRaf);
+    keyboardRaf = requestAnimationFrame(updateKeyboardLayout);
+    window.setTimeout(updateKeyboardLayout, 50);
+    window.setTimeout(updateKeyboardLayout, 150);
+    window.setTimeout(updateKeyboardLayout, 350);
+  }
+
+  function updateKeyboardLayout() {
+    if (!isSearchFocused()) {
+      resetKeyboardCover();
       return;
     }
 
-    resetKeyboardCover();
+    var viewport = window.visualViewport;
+    if (!viewport) return;
+
+    var keyboardInset = Math.max(0, window.innerHeight - viewport.offsetTop - viewport.height);
+
+    searchRoot.classList.add('is-keyboard-open');
+    searchRoot.style.removeProperty('top');
+    searchRoot.style.bottom = keyboardInset + 'px';
+    searchRoot.style.removeProperty('--keyboard-inset');
+
+    var barBottom = searchRoot.getBoundingClientRect().bottom;
+    var shieldHeight = Math.max(0, window.innerHeight - barBottom);
+
+    if (shieldHeight > 0) {
+      keyboardShield.hidden = false;
+      keyboardShield.style.top = barBottom + 'px';
+      keyboardShield.style.height = shieldHeight + 'px';
+    } else {
+      keyboardShield.hidden = true;
+    }
   }
 
   function resetKeyboardCover() {
-    searchRoot.style.removeProperty('--keyboard-offset');
+    if (keyboardRaf) {
+      cancelAnimationFrame(keyboardRaf);
+      keyboardRaf = 0;
+    }
+
     searchRoot.classList.remove('is-keyboard-open');
+    searchRoot.style.removeProperty('top');
+    searchRoot.style.removeProperty('bottom');
+    searchRoot.style.removeProperty('--keyboard-inset');
+    keyboardShield.hidden = true;
+    keyboardShield.style.removeProperty('top');
+    keyboardShield.style.removeProperty('height');
+    unlockScroll();
   }
 
   if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', updateKeyboardCover);
-    window.visualViewport.addEventListener('scroll', updateKeyboardCover);
+    window.visualViewport.addEventListener('resize', updateKeyboardLayout);
+    window.visualViewport.addEventListener('scroll', updateKeyboardLayout);
   }
 })();
