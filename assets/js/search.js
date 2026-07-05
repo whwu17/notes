@@ -7,6 +7,7 @@
   var index = null;
   var documents = [];
   var baseUrl = searchRoot.getAttribute('data-baseurl') || '/';
+  var isTouch = window.matchMedia('(pointer: coarse)').matches;
 
   function normalizeBaseUrl(url) {
     if (!url) return '/';
@@ -111,6 +112,44 @@
         resultsEl.hidden = false;
         searchRoot.classList.add('has-results');
       });
+  }
+
+  function enableInput() {
+    input.removeAttribute('readonly');
+  }
+
+  function disableInput() {
+    input.setAttribute('readonly', 'readonly');
+  }
+
+  function focusInputWithoutScroll() {
+    enableInput();
+    if (input.focus) {
+      try {
+        input.focus({ preventScroll: true });
+        return;
+      } catch (e) {
+        // fall through
+      }
+    }
+    input.focus();
+  }
+
+  if (isTouch) {
+    disableInput();
+
+    input.addEventListener('touchend', function (event) {
+      if (!input.hasAttribute('readonly')) return;
+      event.preventDefault();
+      focusInputWithoutScroll();
+    });
+
+    input.addEventListener('blur', function () {
+      window.setTimeout(function () {
+        if (document.activeElement === input) return;
+        disableInput();
+      }, 0);
+    });
   }
 
   document.addEventListener('click', function (event) {

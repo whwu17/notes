@@ -65,9 +65,6 @@
 
     function storeScrollData() {
       var y = getScrollPos().y;
-      var scrollContainer = document.querySelector('.site-scroll-area');
-      var scrollHeight = scrollContainer ? scrollContainer.scrollHeight : document.body.offsetHeight;
-      var viewportHeight = scrollContainer ? scrollContainer.clientHeight : window.innerHeight;
 
       {%- if banner and header_transparent -%}
       documentElement.setAttribute("data-header-transparent", "");
@@ -77,7 +74,7 @@
 
       if (y <= 0) {
         scrollStatus = "top";
-      } else if ((viewportHeight + y) >= scrollHeight) {
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
         scrollStatus = "bottom";
       } else {
         var isScrollDown = (y - lastScrollY > 0) ? true : false;
