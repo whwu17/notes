@@ -1,33 +1,9 @@
-.site-search-sheet {
+.site-search-bar {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 900;
-  pointer-events: none;
-
-  .site-search-bar {
-    pointer-events: auto;
-  }
-
-  &.is-active {
-    inset: 0;
-    top: 0;
-    bottom: 0;
-    pointer-events: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background: #fff;
-    padding: calc(10px + env(safe-area-inset-top, 0px)) 0 env(safe-area-inset-bottom, 0px);
-    transform: translateZ(0);
-    overflow: hidden;
-  }
-}
-
-.site-search-bar {
-  position: relative;
-  width: 100%;
   padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
   background: #fff;
   border-top: 1px solid #e5e5e5;
@@ -35,26 +11,20 @@
   box-sizing: border-box;
 
   &.is-keyboard-open {
-    padding-bottom: 10px;
+    padding-bottom: calc(10px + var(--keyboard-fill, 0px));
     border-top: none;
     box-shadow: none;
   }
 }
 
-.site-search-sheet.is-active .site-search-bar {
-  flex-shrink: 0;
-  padding: 10px 16px;
-  border-top: none;
-  box-shadow: none;
-}
-
-.site-search-sheet.is-active .site-search-bar-inner {
-  display: flex;
-  flex-direction: column;
-  max-width: none;
-  width: 100%;
-  min-height: 0;
-  flex: 1;
+.site-search-gutter {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 898;
+  background: #fff;
+  pointer-events: none;
 }
 
 .site-search-bar-inner {
@@ -70,10 +40,6 @@
   transform: translateY(-50%);
   color: #888;
   pointer-events: none;
-}
-
-.site-search-sheet.is-active .site-search-icon {
-  left: 30px;
 }
 
 .site-search-input {
@@ -98,18 +64,6 @@
   border-radius: 12px;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
   padding: 8px;
-}
-
-.site-search-sheet.is-active .site-search-results {
-  position: relative;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  flex: 1;
-  min-height: 0;
-  max-height: none;
-  margin: 8px 16px 0;
-  border-radius: 12px;
 }
 
 .site-search-list {
@@ -150,14 +104,6 @@
 
 body {
   padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
-
-  &.site-search-scroll-lock {
-    position: fixed;
-    left: 0;
-    right: 0;
-    width: 100%;
-    overflow: hidden;
-  }
 }
 
 .read-more-link {
@@ -207,12 +153,12 @@ body {
 }
 
 [data-theme="dark"] {
-  .site-search-sheet.is-active {
+  .site-search-bar,
+  .site-search-gutter {
     background: #181818;
   }
 
   .site-search-bar {
-    background: #181818;
     border-top-color: #333;
   }
 
@@ -229,7 +175,8 @@ body {
 }
 
 @media print {
-  .site-search-sheet {
+  .site-search-bar,
+  .site-search-gutter {
     display: none;
   }
 
