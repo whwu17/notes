@@ -7,19 +7,8 @@
   var index = null;
   var documents = [];
   var baseUrl = searchRoot.getAttribute('data-baseurl') || '/';
-  var layoutHeight = window.innerHeight;
-  var layoutWidth = window.innerWidth;
-  var keyboardRaf = 0;
-
-  var gutter = document.createElement('div');
-  gutter.className = 'site-search-gutter';
-  gutter.hidden = true;
-  gutter.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(gutter);
-
-  if ('virtualKeyboard' in navigator) {
-    navigator.virtualKeyboard.overlaysContent = true;
-  }
+  var scrollLockY = 0;
+  var isTouch = window.matchMedia('(pointer: coarse)').matches;
 
   function normalizeBaseUrl(url) {
     if (!url) return '/';
@@ -132,98 +121,53 @@
     }
   });
 
+  input.addEventListener('touchstart', function () {
+    if (!isTouch) return;
+    lockScroll();
+  }, { passive: true });
+
   input.addEventListener('focus', function () {
     loadIndex();
-    scheduleKeyboardLayout();
+    if (isTouch) {
+      lockScroll();
+    }
+    searchRoot.classList.add('is-keyboard-open');
   });
 
   input.addEventListener('blur', function () {
     window.setTimeout(function () {
       if (document.activeElement === input) return;
-      resetKeyboardLayout();
+      unlockScroll();
+      searchRoot.classList.remove('is-keyboard-open');
     }, 0);
   });
 
   input.addEventListener('input', function () {
     loadIndex().then(function () {
       runSearch(input.value);
-      scheduleKeyboardLayout();
     });
   });
 
-  function isSearchFocused() {
-    return document.activeElement === input;
+  function lockScroll() {
+    if (document.documentElement.classList.contains('site-search-scroll-lock')) return;
+    scrollLockY = window.scrollY;
+    document.documentElement.classList.add('site-search-scroll-lock');
+    document.body.classList.add('site-search-scroll-lock');
+    document.body.style.top = -scrollLockY + 'px';
   }
 
-  function getKeyboardFill() {
-    var viewport = window.visualViewport;
-    if (!viewport) return 0;
-
-    var byLayout = Math.max(0, layoutHeight - viewport.height);
-    var byOffset = Math.max(0, window.innerHeight - viewport.offsetTop - viewport.height);
-    return Math.max(byLayout, byOffset);
+  function unlockScroll() {
+    if (!document.documentElement.classList.contains('site-search-scroll-lock')) return;
+    document.documentElement.classList.remove('site-search-scroll-lock');
+    document.body.classList.remove('site-search-scroll-lock');
+    document.body.style.top = '';
+    window.scrollTo(0, scrollLockY);
   }
 
-  function scheduleKeyboardLayout() {
-    updateKeyboardLayout();
-    if (keyboardRaf) cancelAnimationFrame(keyboardRaf);
-    keyboardRaf = requestAnimationFrame(updateKeyboardLayout);
-    window.setTimeout(updateKeyboardLayout, 50);
-    window.setTimeout(updateKeyboardLayout, 150);
-    window.setTimeout(updateKeyboardLayout, 350);
-    window.setTimeout(updateKeyboardLayout, 600);
-  }
-
-  function updateKeyboardLayout() {
-    if (!isSearchFocused()) {
-      resetKeyboardLayout();
-      return;
-    }
-
-    var fill = getKeyboardFill();
-    searchRoot.classList.add('is-keyboard-open');
-    searchRoot.style.setProperty('--keyboard-fill', fill + 'px');
-
-    if (fill > 0) {
-      gutter.hidden = false;
-      gutter.style.height = fill + 'px';
-      return;
-    }
-
-    gutter.hidden = true;
-    gutter.style.removeProperty('height');
-  }
-
-  function resetKeyboardLayout() {
-    if (keyboardRaf) {
-      cancelAnimationFrame(keyboardRaf);
-      keyboardRaf = 0;
-    }
-
-    searchRoot.classList.remove('is-keyboard-open');
-    searchRoot.style.removeProperty('--keyboard-fill');
-    gutter.hidden = true;
-    gutter.style.removeProperty('height');
-  }
-
-  function handleWindowResize() {
-    var viewport = window.visualViewport;
-    var widthChanged = window.innerWidth !== layoutWidth;
-
-    if (!viewport || (viewport.offsetTop === 0 && widthChanged)) {
-      layoutHeight = window.innerHeight;
-      layoutWidth = window.innerWidth;
-    }
-
-    if (isSearchFocused()) {
-      scheduleKeyboardLayout();
-    }
-  }
-
-  window.addEventListener('resize', handleWindowResize);
-
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', scheduleKeyboardLayout);
-    window.visualViewport.addEventListener('scroll', scheduleKeyboardLayout);
+  if (window.visualViewport && isTouch) {
+    window.visualViewport.addEventListener('scroll', function () {
+      if (document.activeElement !== input) return;
+      window.scrollTo(0, scrollLockY);
+    });
   }
 })();
