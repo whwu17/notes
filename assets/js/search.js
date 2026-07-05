@@ -8,15 +8,7 @@
   var index = null;
   var documents = [];
   var baseUrl = searchRoot.getAttribute('data-baseurl') || '/';
-  var layoutHeight = window.innerHeight;
-  var layoutWidth = window.innerWidth;
   var scrollLockY = 0;
-  var keyboardRaf = 0;
-  var isTouch = window.matchMedia('(pointer: coarse)').matches;
-
-  if ('virtualKeyboard' in navigator) {
-    navigator.virtualKeyboard.overlaysContent = true;
-  }
 
   function normalizeBaseUrl(url) {
     if (!url) return '/';
@@ -24,6 +16,10 @@
   }
 
   baseUrl = normalizeBaseUrl(baseUrl);
+
+  function isMobileSearch() {
+    return window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
+  }
 
   function clearResults() {
     resultsEl.innerHTML = '';
@@ -131,38 +127,24 @@
 
   input.addEventListener('focus', function () {
     loadIndex();
-    lockScroll();
-    scheduleKeyboardLayout();
+    openSearchSheet();
   });
 
   input.addEventListener('blur', function () {
     window.setTimeout(function () {
       if (document.activeElement === input) return;
-      resetKeyboardCover();
+      closeSearchSheet();
     }, 0);
   });
 
   input.addEventListener('input', function () {
     loadIndex().then(function () {
       runSearch(input.value);
-      scheduleKeyboardLayout();
     });
   });
 
-  function isSearchFocused() {
-    return document.activeElement === input;
-  }
-
-  function getKeyboardHeight() {
-    var viewport = window.visualViewport;
-    if (!viewport) return 0;
-    var byLayout = Math.max(0, layoutHeight - viewport.height);
-    var byOffset = Math.max(0, window.innerHeight - viewport.offsetTop - viewport.height);
-    return Math.max(byLayout, byOffset);
-  }
-
   function lockScroll() {
-    if (!isTouch || document.body.classList.contains('site-search-scroll-lock')) return;
+    if (document.body.classList.contains('site-search-scroll-lock')) return;
     scrollLockY = window.scrollY;
     document.body.classList.add('site-search-scroll-lock');
     document.body.style.top = -scrollLockY + 'px';
@@ -175,77 +157,20 @@
     window.scrollTo(0, scrollLockY);
   }
 
-  function scheduleKeyboardLayout() {
-    updateKeyboardLayout();
-    if (keyboardRaf) cancelAnimationFrame(keyboardRaf);
-    keyboardRaf = requestAnimationFrame(updateKeyboardLayout);
-    window.setTimeout(updateKeyboardLayout, 50);
-    window.setTimeout(updateKeyboardLayout, 150);
-    window.setTimeout(updateKeyboardLayout, 350);
-    window.setTimeout(updateKeyboardLayout, 600);
-  }
-
-  function updateKeyboardLayout() {
-    if (!isSearchFocused()) {
-      resetKeyboardCover();
-      return;
-    }
-
-    var viewport = window.visualViewport;
-    var keyboardHeight = getKeyboardHeight();
-    document.documentElement.style.setProperty('--keyboard-height', keyboardHeight + 'px');
-
-    if (isTouch) {
+  function openSearchSheet() {
+    if (isMobileSearch()) {
+      lockScroll();
       searchSheet.classList.add('is-active');
       searchRoot.classList.add('is-keyboard-open');
-
-      if (viewport) {
-        searchSheet.style.top = viewport.offsetTop + 'px';
-        searchSheet.style.height = (window.innerHeight - viewport.offsetTop) + 'px';
-        searchSheet.style.bottom = 'auto';
-      }
-
       return;
     }
 
     searchRoot.classList.add('is-keyboard-open');
-    searchRoot.style.bottom = keyboardHeight + 'px';
   }
 
-  function resetKeyboardCover() {
-    if (keyboardRaf) {
-      cancelAnimationFrame(keyboardRaf);
-      keyboardRaf = 0;
-    }
-
+  function closeSearchSheet() {
     searchSheet.classList.remove('is-active');
     searchRoot.classList.remove('is-keyboard-open');
-    searchRoot.style.removeProperty('bottom');
-    searchSheet.style.removeProperty('top');
-    searchSheet.style.removeProperty('height');
-    searchSheet.style.removeProperty('bottom');
-    document.documentElement.style.removeProperty('--keyboard-height');
     unlockScroll();
-  }
-
-  function handleWindowResize() {
-    var viewport = window.visualViewport;
-    var widthChanged = window.innerWidth !== layoutWidth;
-
-    if (!viewport || (viewport.offsetTop === 0 && widthChanged)) {
-      layoutHeight = window.innerHeight;
-      layoutWidth = window.innerWidth;
-    }
-
-    if (isSearchFocused()) {
-      scheduleKeyboardLayout();
-    }
-  }
-
-  window.addEventListener('resize', handleWindowResize);
-
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', scheduleKeyboardLayout);
-    window.visualViewport.addEventListener('scroll', scheduleKeyboardLayout);
   }
 })();
