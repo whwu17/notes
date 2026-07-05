@@ -1,28 +1,46 @@
-.site-search-keyboard-shield {
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 899;
-  background: #fff;
-  pointer-events: none;
-}
-
-.site-search-bar {
+.site-search-sheet {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 900;
+  pointer-events: none;
+
+  .site-search-bar {
+    pointer-events: auto;
+  }
+
+  &.is-active {
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: #fff;
+    padding-bottom: calc(var(--keyboard-height, 0px) + env(safe-area-inset-bottom, 0px));
+    transform: translateZ(0);
+  }
+}
+
+.site-search-bar {
+  position: relative;
+  width: 100%;
   padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
   background: #fff;
   border-top: 1px solid #e5e5e5;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
 
   &.is-keyboard-open {
     padding-bottom: 10px;
     border-top: none;
     box-shadow: none;
   }
+}
+
+.site-search-sheet.is-active .site-search-bar {
+  padding-bottom: 10px;
+  border-top: none;
+  box-shadow: none;
 }
 
 .site-search-bar-inner {
@@ -159,7 +177,7 @@ body {
 }
 
 [data-theme="dark"] {
-  .site-search-keyboard-shield {
+  .site-search-sheet.is-active {
     background: #181818;
   }
 
@@ -181,7 +199,7 @@ body {
 }
 
 @media print {
-  .site-search-bar {
+  .site-search-sheet {
     display: none;
   }
 

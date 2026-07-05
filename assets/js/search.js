@@ -1,20 +1,22 @@
 (function () {
   var searchRoot = document.getElementById('site-search');
-  if (!searchRoot) return;
+  var searchSheet = document.getElementById('site-search-sheet');
+  if (!searchRoot || !searchSheet) return;
 
   var input = searchRoot.querySelector('.site-search-input');
   var resultsEl = searchRoot.querySelector('.site-search-results');
   var index = null;
   var documents = [];
   var baseUrl = searchRoot.getAttribute('data-baseurl') || '/';
-  var keyboardShield = document.createElement('div');
+  var layoutHeight = window.innerHeight;
+  var layoutWidth = window.innerWidth;
   var scrollLockY = 0;
   var keyboardRaf = 0;
+  var isTouch = window.matchMedia('(pointer: coarse)').matches;
 
-  keyboardShield.className = 'site-search-keyboard-shield';
-  keyboardShield.hidden = true;
-  keyboardShield.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(keyboardShield);
+  if ('virtualKeyboard' in navigator) {
+    navigator.virtualKeyboard.overlaysContent = true;
+  }
 
   function normalizeBaseUrl(url) {
     if (!url) return '/';
@@ -122,7 +124,7 @@
   }
 
   document.addEventListener('click', function (event) {
-    if (!searchRoot.contains(event.target)) {
+    if (!searchSheet.contains(event.target)) {
       clearResults();
     }
   });
@@ -151,8 +153,16 @@
     return document.activeElement === input;
   }
 
+  function getKeyboardHeight() {
+    var viewport = window.visualViewport;
+    if (!viewport) return 0;
+    var byLayout = Math.max(0, layoutHeight - viewport.height);
+    var byOffset = Math.max(0, window.innerHeight - viewport.offsetTop - viewport.height);
+    return Math.max(byLayout, byOffset);
+  }
+
   function lockScroll() {
-    if (document.body.classList.contains('site-search-scroll-lock')) return;
+    if (!isTouch || document.body.classList.contains('site-search-scroll-lock')) return;
     scrollLockY = window.scrollY;
     document.body.classList.add('site-search-scroll-lock');
     document.body.style.top = -scrollLockY + 'px';
@@ -172,6 +182,7 @@
     window.setTimeout(updateKeyboardLayout, 50);
     window.setTimeout(updateKeyboardLayout, 150);
     window.setTimeout(updateKeyboardLayout, 350);
+    window.setTimeout(updateKeyboardLayout, 600);
   }
 
   function updateKeyboardLayout() {
@@ -181,25 +192,24 @@
     }
 
     var viewport = window.visualViewport;
-    if (!viewport) return;
+    var keyboardHeight = getKeyboardHeight();
+    document.documentElement.style.setProperty('--keyboard-height', keyboardHeight + 'px');
 
-    var keyboardInset = Math.max(0, window.innerHeight - viewport.offsetTop - viewport.height);
+    if (isTouch) {
+      searchSheet.classList.add('is-active');
+      searchRoot.classList.add('is-keyboard-open');
+
+      if (viewport) {
+        searchSheet.style.top = viewport.offsetTop + 'px';
+        searchSheet.style.height = (window.innerHeight - viewport.offsetTop) + 'px';
+        searchSheet.style.bottom = 'auto';
+      }
+
+      return;
+    }
 
     searchRoot.classList.add('is-keyboard-open');
-    searchRoot.style.removeProperty('top');
-    searchRoot.style.bottom = keyboardInset + 'px';
-    searchRoot.style.removeProperty('--keyboard-inset');
-
-    var barBottom = searchRoot.getBoundingClientRect().bottom;
-    var shieldHeight = Math.max(0, window.innerHeight - barBottom);
-
-    if (shieldHeight > 0) {
-      keyboardShield.hidden = false;
-      keyboardShield.style.top = barBottom + 'px';
-      keyboardShield.style.height = shieldHeight + 'px';
-    } else {
-      keyboardShield.hidden = true;
-    }
+    searchRoot.style.bottom = keyboardHeight + 'px';
   }
 
   function resetKeyboardCover() {
@@ -208,18 +218,34 @@
       keyboardRaf = 0;
     }
 
+    searchSheet.classList.remove('is-active');
     searchRoot.classList.remove('is-keyboard-open');
-    searchRoot.style.removeProperty('top');
     searchRoot.style.removeProperty('bottom');
-    searchRoot.style.removeProperty('--keyboard-inset');
-    keyboardShield.hidden = true;
-    keyboardShield.style.removeProperty('top');
-    keyboardShield.style.removeProperty('height');
+    searchSheet.style.removeProperty('top');
+    searchSheet.style.removeProperty('height');
+    searchSheet.style.removeProperty('bottom');
+    document.documentElement.style.removeProperty('--keyboard-height');
     unlockScroll();
   }
 
+  function handleWindowResize() {
+    var viewport = window.visualViewport;
+    var widthChanged = window.innerWidth !== layoutWidth;
+
+    if (!viewport || (viewport.offsetTop === 0 && widthChanged)) {
+      layoutHeight = window.innerHeight;
+      layoutWidth = window.innerWidth;
+    }
+
+    if (isSearchFocused()) {
+      scheduleKeyboardLayout();
+    }
+  }
+
+  window.addEventListener('resize', handleWindowResize);
+
   if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', updateKeyboardLayout);
-    window.visualViewport.addEventListener('scroll', updateKeyboardLayout);
+    window.visualViewport.addEventListener('resize', scheduleKeyboardLayout);
+    window.visualViewport.addEventListener('scroll', scheduleKeyboardLayout);
   }
 })();
